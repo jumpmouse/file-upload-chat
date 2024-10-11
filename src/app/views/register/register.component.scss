@@ -1,0 +1,254 @@
+@import 'variables';
+@import 'mixins';
+
+.flw-register {
+  padding: 14px 32px;
+
+  @include desktop-uhd-up {
+    padding: 32px;
+  }
+}
+
+// REGISTER
+.flw-register-title {
+  margin-bottom: 107px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 169px;
+  }
+}
+
+.flw-register-form {
+  display: block;
+  margin-bottom: 52px;
+}
+
+.flw-content-actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 37px;
+}
+
+.flw-form-field {
+  width: 100%;
+  display: block;
+}
+
+.flw-form-field-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flw-form-field-label {
+  min-width: 240px;
+  font-weight: bold;
+
+  @include desktop-qhd-up {
+    min-width: 324px;
+  }
+}
+
+.flw-form-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.flw-form-info {
+  padding-inline-start: 255px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
+  line-height: 23px;
+  font-style: italic;
+
+  @include desktop-qhd-up {
+    padding-inline-start: 338px;
+    font-size: 21px;
+    line-height: 27px;
+  }
+}
+
+.flw-form-info-hint {
+  font-style: italic;
+  color: $backround-secondary-color;
+  white-space: normal;
+  margin-bottom: 14px;
+}
+
+.flw-button-spinner {
+  display: inline-block;
+  margin-inline-end: 5px;
+}
+
+.flw-register-actions {
+  color: $backround-secondary-color;
+  text-align: center;
+}
+
+.flw-content-action-submit {
+  margin-bottom: 57px;
+}
+
+.flw-form-link {
+  text-align: center;
+  font-size: 21px;
+  line-height: 27px;
+  font-style: italic;
+}
+
+// VERIFY CODE
+.flw-code-title {
+  margin-bottom: 25px;
+}
+
+.flw-code-content {
+  text-align: center;
+}
+
+.flw-verification-email-container {
+  padding-top: 37px;
+  text-align: start;
+  max-width: 890px;
+  margin: 0 auto;
+}
+
+.flw-register-code-info {
+  margin-bottom: 89px;
+  font-size: 20px;
+  line-height: 25px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 107px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+}
+
+.flw-register-code-info-text {
+  color: $darkgray-color;
+}
+
+.flw-register-code-info-email {
+  font-weight: bold;
+}
+
+.flw-register-code-title {
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 28px;
+  margin-bottom: 36px;
+  
+  @include desktop-qhd-up {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 53px;
+  }
+}
+
+.flw-otp-input-field {
+  display: block;
+  margin-bottom: 28px;
+}
+
+.flw-register-code-link {
+  margin: 0 auto 69px;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: start;
+  display: block;
+  max-width: 890px;
+
+  @include desktop-qhd-up {
+    font-size: 23px;
+    line-height: 28px;
+  }
+}
+
+.flw-code-content {
+  @include desktop-hd {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.flw-register-code-content {
+  font-size: 21px;
+  line-height: 27px;
+  margin-bottom: 89px;
+
+  @include desktop-qhd-up {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 160px;
+  }
+}
+
+.flw-content-action-code-submit {
+  margin-bottom: 36px;
+}
+
+.flw-register-code-footer {
+  font-size: 18px;
+  line-height: 25px;
+
+  @include desktop-qhd-up {
+    font-size: 21px;
+    line-height: 25px;
+  }
+}
+
+// USER VERIFIED
+.flw-verified-content {
+  text-align: center;
+  padding-top: 125px;
+
+  @include desktop-qhd-up {
+    padding-top: 199px;
+  }
+
+  @include desktop-uhd-up {
+    padding-top: 324px;
+  }
+}
+
+.flw-verfied-icon-holder {
+  margin-bottom: 57px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 75px;
+  }
+}
+
+.flw-verfied-icon {
+  font-size: 89px;
+  line-height: 89px;
+  width: 89px;
+  height: 89px;
+  color: $success-color;
+
+  @include desktop-qhd-up {
+    font-size: 125px;
+    line-height: 125px;
+    width: 125px;
+    height: 125px;
+  }
+}
+
+.flw-verified-text {
+  font-size: 37px;
+  line-height: 45px;
+  font-weight: bold;
+  margin-bottom: 75px;
+
+  @include desktop-qhd-up {
+    font-size: 49px;
+    line-height: 61px;
+    margin-bottom: 93px;
+  }
+}

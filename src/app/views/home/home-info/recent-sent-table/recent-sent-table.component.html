@@ -1,0 +1,61 @@
+<flw-card type="table">
+  <div class="mat-elevation-z0">
+    <table mat-table
+        class="full-width-table">
+
+        <ng-container matColumnDef="date">
+        <th mat-header-cell
+            *matHeaderCellDef><ng-container i18n="table|column header">date</ng-container></th>
+        <td mat-cell
+            *matCellDef="let row">
+          <span class="recent-sent-table-action"
+              [matTooltip]="row.createdDate | date:'long':'UTC'"
+              matTooltipPosition="above"
+              matTooltipClass="flw-tooltip">
+            {{row.createdDate | date }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell
+            *matHeaderCellDef><ng-container i18n="table|column header">email</ng-container></th>
+        <td mat-cell
+            *matCellDef="let row">
+            <span class="recent-sent-table-action"
+                [matTooltip]="(row.receiverUser?.suffix || row.receiverUser?.title || '') + ' ' + row.receiverUser?.firstName + ' ' + row.receiverUser?.lastName"
+                matTooltipPosition="above"
+                matTooltipClass="flw-tooltip flw-tooltip-wide">
+              {{row.receiverUser?.email}}
+            </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell
+            *matHeaderCellDef><ng-container i18n="table|column header">actions</ng-container></th>
+        <td mat-cell
+            *matCellDef="let row">
+          <span i18n-matTooltip
+              class="recent-sent-table-action"
+              matTooltip="Send files again to this recipient"
+              matTooltipPosition="above"
+              matTooltipClass="flw-tooltip flw-tooltip-wide">
+            <flw-button class="recent-sent-table-button"
+                [flavor]="'iconBackground'"
+                [icon]="'send'"
+                [size]="'small'"
+                [theme]="'gray'"
+                (buttonClicked)="sendFiles(row.receiverUser?.magicLink)"></flw-button>
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row
+          *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row
+          *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </div>
+</flw-card>

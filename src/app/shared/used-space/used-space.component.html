@@ -1,0 +1,31 @@
+@if (!hidePanel) {
+  @if (!asWidget) {
+    <div class="flw-used-space-title flw-used-space-header" i18n="Used space component|component title">Used Space</div>
+  }
+  <flw-card [type]="'used-space'">
+    <div class="flw-used-space"
+        [class.full-width]="!asWidget"
+        [class.flw-used-space-with-title]="asWidget">
+      @if (asWidget) {
+        <span class="flw-used-space-title" i18n="Used space component|component title">Used Space</span>
+      } @else {
+        <span class="flw-used-space-placeholder"></span>
+      }
+      <span class="flw-used-space-text">
+        @if (availableSpace) {
+          {{usedSpace | fileSize}} / {{availableSpace | fileSize}}
+        }
+        @else {
+          <span i18n="Used space component|info text"> No space available</span>
+        }
+      </span>
+      <flw-progress-bar [value]="value" class="flw-used-space-progress"></flw-progress-bar>
+      <div class="flw-used-space-actions"
+          [class.flw-button-position-end]="!asWidget">
+        @if (asWidget) {
+          <flw-button [flavor]="'textTransparent'" [size]="'small'" (buttonClicked)="hidePanel = true"><ng-container i18n="button">Dismiss</ng-container></flw-button>
+        }
+      </div>
+    </div>
+  </flw-card>
+}

@@ -1,0 +1,62 @@
+<div class="flw-profile">
+  <flw-page-title class="flw-profile-title"><ng-container i18n="page title">Profile</ng-container></flw-page-title>
+  <div class="flw-content">
+    @if (isUhd) {
+      <flw-circular-content class="flw-profile-initials" [size]="'large'" [content]="initials"></flw-circular-content>
+    } @else {
+      <flw-circular-content class="flw-profile-initials" [size]="'medium'" [content]="initials"></flw-circular-content>
+    }
+    <div class="flw-profile-email">{{userData.email}}</div>
+    <div class="flw-profile-horos-link">{{userData.magicLink}} <flw-button [flavor]="'iconTransparent'" [icon]="'content_copy'" [size]="'small'" (buttonClicked)="copyMagicLink(userData.magicLink)"></flw-button></div>
+
+    <form [formGroup]="profileForm"
+        class="flw-profile-form"
+        (submit)="saveProfile()">
+      <div class="flw-form-section">
+        <div class="flw-form-field-container">
+          <div class="flw-form-field-label" i18n="profile|input label">First Name</div>
+          <mat-form-field class="flw-form-field hide-hint"
+              appearance="outline">
+            <input matInput
+                formControlName="firstName"
+                maxlength="120">
+          </mat-form-field>
+        </div>
+        <div class="flw-form-field-container">
+          <div class="flw-form-field-label" i18n="profile|input label">Last Name</div>
+          <mat-form-field class="flw-form-field hide-hint"
+              appearance="outline">
+            <input matInput
+                formControlName="lastName"
+                maxlength="120">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="flw-form-field-container flw-form-field-container-last">
+        <div class="flw-form-field-label" i18n="profile|input label">Contact Number</div>
+        <mat-form-field class="flw-form-field"
+            appearance="outline">
+          <input matInput
+              formControlName="phoneNumber"
+              maxlength="120">
+          <mat-hint><ng-container i18n="phone number format hint">in format: +1-XXX-XXX-XXXX</ng-container></mat-hint>
+          @if (profileForm.controls.phoneNumber.touched && profileForm.controls.phoneNumber.errors?.pattern) {
+            <mat-error>
+              <span i18n>Invalid phone number</span>
+            </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="flw-content-actions flw-content-action-submit">
+        <flw-button [flavor]="'iconText'"
+            type="submit"
+            [size]="'medium'">
+          @if (loading) {<mat-spinner class="flw-button-spinner" [diameter]="20"></mat-spinner>}
+          <ng-container i18n="button">Save</ng-container>
+        </flw-button>
+      </div>
+    </form>
+    <mat-divider class="flw-profile-divider"></mat-divider>
+    <flw-used-space class="flw-profile-used-space" [availableSpace]="availableSpace" [usedSpace]="usedSpace"></flw-used-space>
+  </div>
+</div>

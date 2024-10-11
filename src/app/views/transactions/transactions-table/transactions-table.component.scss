@@ -1,0 +1,249 @@
+@import 'variables';
+@import 'mixins';
+
+.full-width-table {
+  width: 100%;
+  --mat-table-row-item-container-height: 38px;
+
+  @include desktop-qhd-up {
+    --mat-table-row-item-container-height: 42px;
+  }
+
+  @include desktop-uhd-up {
+    --mat-table-row-item-container-height: 46px;
+  }
+
+  .mat-mdc-cell,
+  .mat-mdc-header-cell {
+    --mat-table-row-item-outline-color: #{$menu-divider-color};
+    --mat-table-row-item-outline-width: 2px;
+
+    font-size: 16px;
+    line-height: 21px;
+
+    @include desktop-up {
+      line-height: 23px;
+    }
+
+    @include desktop-qhd-up {
+      font-size: 20px;
+      line-height: 25px;      
+    }
+  }
+  .mat-mdc-header-cell {
+    color: $darkgray-color;
+
+    &.mat-column-name {
+      text-align: start;
+    }
+  }
+}
+
+.mat-column-date,
+.mat-column-type,
+.mat-column-deletedDate,
+.mat-column-size {
+  text-align: center;
+}
+
+.mat-column-deletedDate {
+  @media (max-width: 890px) {
+    display: none;
+  }
+}
+
+.mat-column-actions {
+  text-align: center;
+}
+
+.transactions-table-action {
+  display: inline-block;
+}
+
+.flw-transactions-search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  padding: 0 4px;
+
+  @include desktop-qhd-up {
+    margin-top: 7px;
+    padding: 0 5px;
+    margin-bottom: 7px;
+  }
+
+  @include desktop-uhd-up {
+    margin-top: 14px;
+    padding: 0 7px;
+    margin-bottom: 25px;
+  }
+}
+
+.flw-transactions-form-label {
+  text-align: start;
+  display: inline-block;
+  color: $backround-secondary-color;
+
+  .mat-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 34px;
+    line-height: 34px;
+
+    @include desktop-qhd-up {
+      width: 41px;
+      height: 41px;
+      font-size: 41px;
+      line-height: 41px;
+    }
+
+    @include desktop-uhd-up {
+      width: 48px;
+      height: 48px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+}
+
+.flw-form-field {
+  --mat-form-field-container-height: 36px;
+  --mat-form-field-container-vertical-padding: 0px;
+
+  flex: 1;
+
+  input {
+    padding: 5px 0;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  @include desktop-qhd-up {
+    --mat-form-field-container-height: 43px;
+    --mat-form-field-container-vertical-padding: 0px;
+
+    input {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+
+  @include desktop-uhd-up {
+    --mat-form-field-container-height: 48px;
+    --mat-form-field-container-vertical-padding: 0px;
+  
+    input {
+      padding: 7px 0;
+      font-size: 20px;
+      line-height: 34px;
+    }
+  }
+}
+
+.flw-transactions-card {
+  height: 100%;
+  display: block;
+  padding: 5px;
+}
+
+.flw-transactions-table tr td {
+  padding: 2px;
+  cursor: default;
+
+  @include desktop-qhd-up {
+    padding: 9px 4px;
+  }
+
+  @include desktop-uhd-up {
+    padding: 14px;
+  }
+}
+
+.flw-transactions-list-mode-container {
+  text-align: center;
+  margin-bottom: 18px;
+
+  @include desktop-uhd-up {
+    margin-bottom: 41px;
+  }
+
+  .mat-button-toggle {
+    font-size: 18px;
+    line-height: 20px;
+    padding: 0 7px;
+
+    @include desktop-qhd-up {
+      font-size: 20px;
+      line-height: 29px;
+      padding: 0 9px;
+    }
+
+    @include desktop-uhd-up {
+      font-size: 25px;
+      line-height: 41px;
+      padding: 0 11px;
+    }
+  }
+}
+
+.flw-transactions-list-mode {
+  text-align: center;
+}
+
+.flw-transactions-paginator {
+  --mat-paginator-container-size: 32px;
+
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 11px;
+
+  @include desktop-qhd-up {
+    --mat-paginator-container-size: 41px;
+  
+    text-align: center;
+    font-size: 16px;
+    line-height: 21px;
+    margin-top: 16px;
+  }
+  
+  @include desktop-uhd-up {
+    --mat-paginator-container-size: 50px;
+  
+    text-align: center;
+    font-size: 20px;
+    line-height: 25px;
+    margin-top: 21px;
+  }
+}
+
+.flw-transactions-table-actions {
+  text-align: center;
+}
+
+.flw-transactions-table-actions-container {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  align-items: center;
+}
+
+.flw-transactions-table-type {
+  .mat-icon {
+    font-size: 25px;
+    line-height: 25px;
+    width: 25px;
+    height: 25px;
+    padding-top: 3px;
+  }
+}
+
+.flw-transactions-table-name {
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  max-width: 214px;
+}

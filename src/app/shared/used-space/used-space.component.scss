@@ -1,0 +1,78 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.flw-used-space {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flw-used-space-title {
+  font-family: $medium-font-family;
+  // TODO remove after adding font
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 7px;
+
+  @include desktop-qhd-up {
+    font-size: 23px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+}
+
+.flw-used-space-header {
+  padding-inline-start: 18px;
+  font-weight: normal;
+}
+
+.flw-used-space-text {
+  font-size: 14px;
+  line-height: 20px;
+
+  @include desktop-qhd-up {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+.flw-used-space-progress {
+  margin-top: 11px;
+  margin-bottom: 11px;
+
+  @include desktop-qhd-up {
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+
+  .full-width & {
+    margin-top: 21px;
+    margin-bottom: 21px;
+
+    @include desktop-qhd-up {
+      margin-top: 36px;
+      margin-bottom: 36px;
+    }
+  }
+}
+
+.flw-used-space-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  &.flw-button-position-end {
+    justify-content: flex-end;
+  }
+}
+
+.flw-used-space-placeholder {
+  width: 100%;
+  margin-bottom: 7px;
+}

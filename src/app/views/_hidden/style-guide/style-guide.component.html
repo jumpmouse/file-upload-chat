@@ -1,0 +1,309 @@
+<div class="style-guide-container">
+  <mat-card class="panel-card">
+    <mat-card-header>
+      <mat-card-title><h1>STYLE GUIDE</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="panel-card-content">
+      <div class="panel-container">
+
+        <div class="menu-panel">
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Menu</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="example-card-content"> Menu placeholder</mat-card-content>
+          </mat-card>
+        </div>
+
+        <div class="content-panel">
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Colors</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content"> colors placeholder</mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Typography</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content"> Typography placeholder</mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Language Select</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-content class="example-card-content">
+                  <flw-language-select></flw-language-select>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Circular Content Component</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title class="example-card-title">Text input</mat-card-title>
+                </mat-card-header>
+                <mat-divider class="style-guide-card-divider"></mat-divider>
+                <mat-card-content class="example-card-content">
+                  <flw-circular-content [content]="'FL'" [size]="'large'"></flw-circular-content>
+                  <flw-circular-content [content]="'FL'" [size]="'small'"></flw-circular-content>
+                </mat-card-content>
+              </mat-card>
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title class="example-card-title">Image input</mat-card-title>
+                </mat-card-header>
+                <mat-divider class="style-guide-card-divider"></mat-divider>
+                <mat-card-content class="example-card-content">
+                  <flw-circular-content [content]="'/assets/falconlink_logo.svg'" [type]="'image'" [size]="'large'"></flw-circular-content>
+                  <flw-circular-content [withBackground]="true" [content]="'/assets/falconlink_logo.svg'" [type]="'image'" [size]="'small'"></flw-circular-content>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Logo Link Component</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-content class="example-card-content">
+                  <flw-logo-link></flw-logo-link>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">App Store Badges</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-content class="example-card-content">
+                  <flw-app-store-badges></flw-app-store-badges>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Links</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-content class="example-card-content">
+                  <div [style.font-size]="'20px'">
+                    <flw-link [theme]="'blue'">theme blue</flw-link> <br>
+                    <flw-link [theme]="'gray'" [underline]="true">theme gray underline</flw-link> <br>
+                    <flw-link [theme]="'darkgray'" [underline]="true">theme darkgray underline</flw-link> <br>
+                    <flw-link [theme]="'white'" [bold]="true">theme white bold</flw-link> <br>
+                    <flw-link [theme]="'red'" [bold]="true">theme red bold</flw-link> <br>
+                    <flw-link [theme]="'inherit'">inherit color</flw-link>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">page title</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-content class="example-card-content">
+                  <flw-page-title>Hello!</flw-page-title>
+                  <flw-page-title>Where would you like to send files to, today?</flw-page-title>
+                </mat-card-content>
+              </mat-card>
+              <mat-card class="example-card">
+                <mat-card-content class="example-card-content">
+                  <flw-page-title [type]="'withSubtitle'" [size]="'large'">
+                    Send your files to
+                    <ng-container id="subtitle">'SelectedUserName'</ng-container>
+                  </flw-page-title>
+                  <flw-page-title [type]="'text'" [color]="'darkgray'">The maximum upload size is 'SelectedUserSpace'</flw-page-title>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Progress Bar</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card-ver2">
+                <mat-card-content class="example-card-content">
+                  <flw-progress-bar [value]="40"></flw-progress-bar>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Buttons</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title class="example-card-title">Icon button</mat-card-title>
+                </mat-card-header>
+                <mat-divider class="style-guide-card-divider"></mat-divider>
+                <mat-card-content class="example-card-content">
+                  With Background
+                  <div>
+                    <flw-button [flavor]="'iconBackground'" [icon]="'add'" [size]="'large'"></flw-button>
+                    <flw-button [flavor]="'iconBackground'" [icon]="'question_mark'" [size]="'medium'"></flw-button>
+                    <flw-button [flavor]="'iconBackground'" [icon]="'send'" [size]="'small'" [theme]="'gray'"></flw-button>
+                    <flw-button [flavor]="'iconBackground'" [icon]="'more_horiz'" [size]="'xsmall'" [theme]="'gray'"></flw-button>
+                    <flw-button [flavor]="'iconBackground'" [icon]="'close'" [size]="'xxsmall'" [theme]="'gray-inverted'"></flw-button>
+                  </div>
+                  Transparent Background
+                  <div>
+                    <flw-button [flavor]="'iconTransparent'" [icon]="'send'" [size]="'large'" theme="blue"></flw-button>
+                    <flw-button [flavor]="'iconTransparent'" [icon]="'logout'" [size]="'medium'"></flw-button>
+                    <flw-button [flavor]="'iconTransparent'" [icon]="'content_copy'" [size]="'small'"></flw-button>
+                  </div>
+                  Outlined
+                  <div>
+                    <flw-button [flavor]="'iconOutlined'" [icon]="'chevron_left'" [size]="'small'" theme="blue"></flw-button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title class="example-card-title">Icon + Text button</mat-card-title>
+                </mat-card-header>
+                <mat-divider class="style-guide-card-divider"></mat-divider>
+                <mat-card-content class="example-card-content">
+                  <div>
+                    <flw-button [flavor]="'iconText'" [icon]="'add_moderator'" [size]="'medium'" [wide]="true">Create Account</flw-button>
+                  </div>
+                  <div>
+                    <flw-button [flavor]="'iconText'" [size]="'medium'" [wide]="true">Cancel Transfer</flw-button>
+                  </div>
+                  <div>
+                    <flw-button [flavor]="'iconText'" [icon]="'send'" [size]="'medium'">Send</flw-button>
+                  </div>
+                  <div>
+                    <flw-button [flavor]="'iconText'" [size]="'medium'">Login</flw-button>
+                  </div>
+                  <div>
+                    <flw-button [flavor]="'iconText'" [size]="'large'" [wide]="true">Create a free account</flw-button>
+                  </div>
+                  <div>
+                    <flw-button [flavor]="'iconText'" [size]="'small'" [theme]="'gray'">details</flw-button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title class="example-card-title">Text transparent button</mat-card-title>
+                </mat-card-header>
+                <mat-divider class="style-guide-card-divider"></mat-divider>
+                <mat-card-content class="example-card-content">
+                  <flw-button [flavor]="'textTransparent'" [size]="'large'">Yes</flw-button>
+                  <flw-button [flavor]="'textTransparent'" [size]="'medium'" theme="red" [bold]="true">Delete my Account</flw-button>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Card component</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <flw-card type="content-panel">base content card</flw-card><br>
+              <flw-card type="table">table card</flw-card><br>
+              <flw-card type="used-space">used space card</flw-card><br>
+              <flw-card type="info">info card</flw-card><br>
+              <flw-card type="message">message card</flw-card><br>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">User badge</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <mat-card class="example-card">
+                <mat-card-content class="example-card-content">
+                  <flw-user-badge [user]="user"></flw-user-badge>
+                </mat-card-content>
+              </mat-card>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Used space component</mat-card-title>
+            </mat-card-header>
+            <mat-divider class="style-guide-card-divider"></mat-divider>
+            <mat-card-content class="style-guide-card-content">
+              <flw-used-space [availableSpace]="760000" [usedSpace]="260000"></flw-used-space><br>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="style-guide-card">
+            <mat-card-header>
+              <mat-card-title class="style-guide-card-title">Side Menu</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="style-guide-card-content">
+              <div class="menu-container">
+                <mat-card class="example-card">
+                  <mat-card-header>
+                    <mat-card-title class="example-card-title"></mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="example-card-content">
+                    <flw-side-menu></flw-side-menu>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="menu-container-flexy">
+                <mat-card class="example-card">
+                  <mat-card-header>
+                    <mat-card-title class="example-card-title"></mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="example-card-content">
+                    <flw-side-menu></flw-side-menu>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

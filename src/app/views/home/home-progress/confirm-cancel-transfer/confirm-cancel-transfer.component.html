@@ -1,0 +1,16 @@
+<mat-dialog-content>
+  <div class="flw-cancel-transfer-icon">
+    <mat-icon>delete_forever</mat-icon>
+  </div>
+  <div class="flw-cancel-transfer-text">
+    <ng-container i18n>Are you sure you want cancel transfer?</ng-container>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="flw-cancel-transfer-action">
+    <flw-button [flavor]="'textTransparent'" [size]="'medium'" (buttonClicked)="cancelTransfer()"><ng-container i18n="button">Yes</ng-container></flw-button>
+  </div>
+  <div class="flw-cancel-transfer-action">
+    <flw-button [flavor]="'textTransparent'" [size]="'medium'" (buttonClicked)="closeDialog()"><ng-container i18n="button">No</ng-container></flw-button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,23 @@
+<flw-layout>
+  <ng-container id="sidenav-content">
+    <flw-card type="menu-panel" class="panel-card">
+      <flw-side-menu></flw-side-menu>
+    </flw-card>
+    <flw-app-store-badges></flw-app-store-badges>
+  </ng-container>
+  <ng-container id="main-content">
+    <flw-content-holder>
+      <ng-container id="menu-panel">
+        <flw-card class="panel-card" type="menu-panel">
+          <flw-side-menu></flw-side-menu>
+        </flw-card>
+        <flw-app-store-badges></flw-app-store-badges>
+      </ng-container>
+      <ng-container id="content-panel"><router-outlet /></ng-container>
+    </flw-content-holder>
+    @if (!environment.production) {
+      <router-outlet [name]="'hidden'"/>
+    }
+  </ng-container>
+</flw-layout>
+

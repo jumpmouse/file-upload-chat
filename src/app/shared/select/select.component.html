@@ -1,0 +1,12 @@
+<mat-form-field class="flw-select-wrapper"
+    [subscriptSizing]="subscriptSizing">
+  <mat-select class="flw-select"
+      [value]="value"
+      [disabled]="disabled"
+      [panelClass]="'flw-select-option-panel'"
+      (selectionChange)="selectionChanged($event)">
+    @for (option of options; track option.value) {
+    <mat-option [value]="option.value">{{option.displayName}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

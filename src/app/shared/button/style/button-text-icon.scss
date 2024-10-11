@@ -1,0 +1,84 @@
+@use "sass:map";
+@use './button-mixins';
+
+@import 'variables';
+
+$_responsive-variables: (
+  mobile-up: (
+    font-size-small: 12px,
+    font-size-medium: 20px,
+    font-size-large: 18px,
+    line-height-small: 21px,
+    line-height-medium: 32px,
+    line-height-large: 34px,
+    height-small: 21px,
+    height-medium: 32px,
+    height-large: 34px,
+  ),
+  tablet-up: (
+    font-size-small: 12px,
+    font-size-medium: 20px,
+    font-size-large: 18px,
+    line-height-small: 21px,
+    line-height-medium: 32px,
+    line-height-large: 34px,
+    height-small: 21px,
+    height-medium: 32px,
+    height-large: 34px,
+  ),
+  large-desktop-up: (
+    font-size-small: 16px,
+    font-size-medium: 28px,
+    font-size-large: 23px,
+    line-height-small: 27px,
+    line-height-medium: 50px,
+    line-height-large: 48px,
+    height-small: 27px,
+    height-medium: 50px,
+    height-large: 57px,
+  ),
+);
+$_container-styles: (
+  mobile-up: (
+    width: 125px,
+    width-wide: 214px,
+    padding-small: 0 5px,
+    padding: 0 11px,
+    border-radius-small: 6px,
+    border-radius: 11px,
+  ),
+  tablet-up: (
+    width: 125px,
+    width-wide: 214px,
+    padding-small: 0 5px,
+    padding: 0 11px,
+    border-radius-small: 6px,
+    border-radius: 11px,
+  ),
+  large-desktop-up: (
+    width: 160px,
+    width-wide: 285px,
+    padding-small: 0 11px,
+    padding: 0 18px,
+    border-radius-small: 6px,
+    border-radius: 15px,
+  ),
+);
+$_sizes: small, medium, large;
+$_container-sizes: wide, small;
+$_breakpoints: mobile-up, tablet-up, large-desktop-up;
+
+.flw-button-text-icon {
+  --mdc-filled-button-container-color: #{$text-button-background};
+
+  @include button-mixins.container-breakpoint-classes($_container-styles, $_breakpoints, $_container_sizes);
+
+  @include button-mixins.button-breakpoint-classes(text, $_responsive-variables, $_breakpoints, $_sizes);
+
+  .mat-icon {
+    font-size: inherit;
+    height: auto;
+    line-height: inherit;
+    width: inherit;
+  }
+}

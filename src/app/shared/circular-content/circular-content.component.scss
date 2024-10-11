@@ -1,0 +1,182 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  width: 100%;
+}
+// mixins
+@mixin circular-content-dimensions($size) {
+  max-width: $size;
+  max-height: $size;
+}
+
+@mixin circular-content-position($size, $full-width: false) {
+    top: $size;
+    bottom: $size;
+    inset-inline-start: $size;
+    inset-inline-end: $size;
+
+    @if $full-width {
+      width: 100%;
+      height: 100%;
+    } @else {
+      width: calc(100% - $size * 2);
+      height: calc(100% - $size * 2);
+    }
+}
+
+@mixin icon-size($size) {
+  font-size: $size;
+  line-height: $size;
+  width: $size;
+  height: $size;
+}
+
+// variables
+$circular-content-image-position: 11px;
+$circular-content-image-position-small: 5px;
+$circular-content-text-size-large: 129px;
+$circular-content-text-size-medium: 89px;
+$circular-content-text-size-small: 57px;
+$circular-content-image-size-large: 218px;
+$circular-content-image-size-medium: 142px;
+$circular-content-image-size-small: 62px;
+$circular-content-image-size-x-small: 36px;
+$circular-content-text-box-shadow: 0px 3px 5px #0000006A;
+$circular-content-image-box-shadow: 0px 3px 5px #0000006C;
+$circular-content-image-box-shadow-inset: inset 0px 3px 5px #00000043;
+$circular-content-icon-large: 64px;
+$circular-content-icon-medium: 50px;
+$circular-content-icon-small: 34px;
+
+// style
+// content container
+.circular-content-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: 50%;
+  vertical-align: middle;
+
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  &.block-element {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+// text content
+.content-type-text {
+  background-color: $backround-terciary-color;
+  box-shadow: $circular-content-text-box-shadow;
+
+  &.large {
+    @include circular-content-dimensions($circular-content-text-size-large);
+
+    .content {
+      font: var(--sys-title-large);
+      font-weight: 700;
+    }
+
+    .mat-icon {
+      @include icon-size($circular-content-icon-large);
+    }
+  }
+
+  &.medium {
+    @include circular-content-dimensions($circular-content-text-size-medium);
+
+    .content {
+      font: var(--sys-title-medium);
+      font-weight: 700;
+    }
+
+    .mat-icon {
+      @include icon-size($circular-content-icon-medium);
+    }
+  }
+
+  &.small {
+    @include circular-content-dimensions($circular-content-text-size-small);
+
+    .content {
+      font: var(--sys-title-small);
+    }
+
+    .mat-icon {
+      @include icon-size($circular-content-icon-small);
+    }
+  }
+}
+
+// image content
+.content-type-image {
+  background-color: transparent;
+
+  &.large {
+    @include circular-content-dimensions($circular-content-image-size-medium);
+
+    @include desktop-qhd-up {
+      @include circular-content-dimensions($circular-content-image-size-large);
+    }
+  }
+
+  &.medium {
+    @include circular-content-dimensions($circular-content-image-size-medium);
+  }
+
+  &.small {
+    @include circular-content-dimensions($circular-content-image-size-small);
+  }
+}
+
+// image with background
+.with-background {
+  background-color: $container-background-color;
+  box-shadow: $circular-content-image-box-shadow-inset, $circular-content-image-box-shadow;
+
+  &.large,
+  &.medium,
+  &.small {
+    .content {
+      @include circular-content-position($circular-content-image-position);
+    }
+  }
+
+  &.adjust-for-mobile {
+    &.small {
+      @include circular-content-dimensions($circular-content-image-size-x-small);
+
+      .content {
+        @include circular-content-position($circular-content-image-position-small);
+      }
+
+      @include desktop-qhd-up {
+        @include circular-content-dimensions($circular-content-image-size-small);
+
+        .content {
+          @include circular-content-position($circular-content-image-position);
+        }
+      }
+    }
+  }
+}
+
+.content {
+  @include circular-content-position(0, true);
+  display: flex;
+  position: absolute;
+  align-items: center;
+  text-align: center;
+  line-height: 100%;
+  border-radius: 50%;
+
+  &>* {
+    flex: 1;
+  }
+}

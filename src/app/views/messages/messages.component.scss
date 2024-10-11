@@ -1,0 +1,180 @@
+@import 'variables';
+@import 'mixins';
+
+.flw-messages-page {
+  padding: 14px;
+
+  @include desktop-qhd-up {
+    padding: 14px 32px;
+  }
+
+  @include desktop-uhd-up {
+    padding: 32px;
+  }
+}
+
+.flw-messages-page-filters {
+  display: flex;
+  width: 33%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 10px 16px;
+
+  @include desktop-up {
+    width: 30%;
+  }
+}
+
+.flw-messages-sort-events-button {
+  .flw-button {
+    padding: 0 0 0 8px;
+  }
+}
+
+.flw-messages-sort-events-icon {
+  font-size: 21px;
+  line-height: 21px;
+  width: 21px;
+  height: 21px;
+}
+
+.flw-messages-filter-button {
+  display: block;
+  height: 21px;
+  width: 21px;
+
+  @include desktop-qhd-up {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+.flw-messages-content {
+  display: flex;
+  gap: 27px;
+  align-items: flex-start;
+  height: 672px;
+
+  @include small-desktop-up {
+    height: 556px;
+  }
+
+  @include desktop-up {
+    height: 570px;
+  }
+
+  @include desktop-qhd-up {
+    height: 724px;
+  }
+
+  @include desktop-uhd-up {
+    height: 976px;
+  }
+}
+
+.flw-messages-events {
+  width: 33%;
+  height: 100%;
+
+  @include desktop-up {
+    width: 30%;
+  }
+}
+
+.flw-message-event {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $backround-terciary-color;
+  }
+
+  > * {
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include small-desktop-up {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    @include desktop-qhd-up {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  .flw-message-event-title {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+
+    @include small-desktop-up {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include desktop-qhd-up {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  
+  .flw-message-event-email {}
+  
+  .flw-message-event-phone {
+    margin-bottom: 4px;
+  }
+  
+  .flw-message-event-date-header,
+  .flw-message-event-date {
+    font-style: italic;
+  }
+}
+
+.flw-messages-chat {
+  flex: 1;
+  height: 100%;
+}
+
+.flw-messages-events-content {
+  .flw-messages-placeholder .flw-placeholder-title {
+    margin-top: 22px;
+  }
+}
+
+.flw-messages-placeholder {
+  margin-top: 71px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 27px;
+  width: 100%;
+}
+
+.flw-placeholder-title {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: bold;
+
+  @include desktop-qhd-up {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+.flw-placeholder-image {
+  .mat-icon {
+    font-size: 75px;
+    line-height: 75px;
+    height: 75px;
+    width: auto;
+  }
+}

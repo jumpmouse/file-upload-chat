@@ -1,0 +1,75 @@
+<flw-page-title [type]="'withSubtitle'"
+    [size]="'large'">
+  <ng-container i18n="page title">Send your files to</ng-container>
+  <ng-container id="subtitle"> {{doctorInfo?.doctorName}}</ng-container>
+</flw-page-title>
+<flw-page-title class="flw-title"
+    [type]="'text'"
+    [color]="'darkgray'">
+  <ng-container i18n="page subtitle">The maximum upload size is</ng-container>
+  <span> {{ (doctorInfo?.uploadLimitInKb | fileSize) || '0KB' }}</span>
+</flw-page-title>
+<div class="flw-content flw-home-progress-content">
+  @if (state !== 'done') {
+  <div class="flw-home-progress">
+    @if (state === 'transfer-error') {
+    <span class="flw-home-progress-error"><mat-icon>warning</mat-icon></span>
+    } @else {
+    <div class="flw-home-progress-percent">{{progress}}%</div>
+    }
+    <mat-progress-spinner class="example-margin"
+        mode="determinate"
+        [color]="'#FF6200'"
+        [strokeWidth]="progressStrokeWidth"
+        [diameter]="progressDiameter"
+        [value]="progress">
+    </mat-progress-spinner>
+  </div>
+  <div class="flw-text-info"
+      [class.flw-text-solid]="state === 'transfer-error'">
+    @if (state === 'pack-files') {
+    <ng-container i18n>Processing files...</ng-container>
+    } @else if (state === 'transfer-files') {
+    <ng-container i18n>Transfer in progress...</ng-container>
+    } @else if (state === 'transfer-error') {
+    <ng-container i18n>Transfer interrupted</ng-container>
+    }
+  </div>
+  @if (state === 'transfer-files') {
+  <flw-button [flavor]="'iconText'"
+      [size]="'medium'"
+      [wide]="true"
+      (buttonClicked)="cancelTransfer(true)"><ng-container i18n="button">Cancel Transfer</ng-container></flw-button>
+  <div class="flw-text-footer" i18n>Please do not close your browser until the upload is completed</div>
+  }
+  @if (state === 'transfer-error') {
+  <div class="flw-home-actions">
+    <flw-button [flavor]="'iconText'"
+        [size]="'medium'"
+        [wide]="true"
+        (buttonClicked)="retryTransfer()"><ng-container i18n="button">Try Again</ng-container></flw-button>
+    <flw-button [flavor]="'iconText'"
+        [size]="'medium'"
+        [wide]="true"
+        (buttonClicked)="cancelTransfer(true)"><ng-container i18n="button">Cancel Transfer</ng-container></flw-button>
+  </div>
+  }
+  } @else {
+    <div class="flw-content flw-home-done-content">
+    <div class="flw-home-done-icon-holder">
+      <mat-icon fontSet="material-icons-outlined" class="flw-home-done-icon">send</mat-icon>
+    </div>
+    <div class="flw-home-done-title" i18n>We received your request!</div>
+    <div class="flw-home-done-text">
+      <span class="flw-home-done-important" i18n>Important:</span>&nbsp;
+      <span i18n>We’re checking the file(s) you uploaded and will email you to tell you if it worked out. Please check your spam folder too. Give us a few minutes.</span>
+    </div>
+    <div class="flw-content-actions flw-content-action-go-home">
+      <flw-button [flavor]="'iconText'"
+          [size]="'medium'"
+          [wide]="true"
+          (buttonClicked)="goToHome()"><ng-container i18n="button">New Upload</ng-container></flw-button>
+    </div>
+  </div>
+  }
+</div>

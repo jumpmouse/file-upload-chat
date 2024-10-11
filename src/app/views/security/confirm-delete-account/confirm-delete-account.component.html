@@ -1,0 +1,17 @@
+<mat-dialog-content>
+  <div class="flw-delete-account-icon">
+    <mat-icon>delete_forever</mat-icon>
+  </div>
+  <div class="flw-delete-account-text">
+    <div class="flw-delete-account-text-top" i18n>Are you sure you want to delete your account?</div>
+    <div class="flw-delete-account-text-bottom" i18n>All your data will be deleted and you will not be able to recover your account. This is a permanent action</div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="flw-delete-account-action">
+    <flw-button [flavor]="'textTransparent'" [size]="'medium'" (buttonClicked)="closeDialog()"><ng-container i18n="button">No</ng-container></flw-button>
+  </div>
+  <div class="flw-delete-account-action">
+    <flw-button [flavor]="'textTransparent'" [size]="'medium'" [theme]="'red'" (buttonClicked)="deleteAccount()"><ng-container i18n="button">Yes</ng-container></flw-button>
+  </div>
+</mat-dialog-actions>

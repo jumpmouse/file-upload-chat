@@ -1,0 +1,48 @@
+@switch (flavor) {
+  @case ('iconTransparent') {
+    <button mat-icon-button [type]="type" [class]="'flw-button flw-button-icon flw-button-' + size + ' flw-button-' + theme"
+        [disabled]="disabled"
+        (click)="buttonClicked.emit()">
+      @if (icon) { <mat-icon>{{ icon }}</mat-icon> }
+      @else { <ng-container *ngTemplateOutlet="contentTpl"></ng-container> }
+    </button>
+  }
+  @case ('iconBackground') {
+    <button mat-icon-button [type]="type" [class]="'flw-button flw-button-icon-background flw-button-' + size + ' flw-button-' + theme"
+        [disabled]="disabled"
+        (click)="buttonClicked.emit()">
+      @if (icon) { <mat-icon>{{ icon }}</mat-icon> }
+      @else { <ng-container *ngTemplateOutlet="contentTpl"></ng-container> }
+    </button>
+  }
+  @case ('iconOutlined') {
+    <button mat-icon-button [type]="type" [class]="'flw-button flw-button-icon-outlined flw-button-' + size + ' flw-button-' + theme"
+        [disabled]="disabled"
+        (click)="buttonClicked.emit()">
+      @if (icon) { <mat-icon>{{ icon }}</mat-icon> }
+      @else { <ng-container *ngTemplateOutlet="contentTpl"></ng-container> }
+    </button>
+  }
+  @case ('textTransparent') {
+    <button mat-button [type]="type" [class]="'flw-button flw-button-text flw-button-' + size + ' flw-button-' + theme"
+        [class.flw-button-bold]="bold"
+        [class.flw-button-weight-medium]="weightMedium"
+        [disabled]="disabled"
+        (click)="buttonClicked.emit()">
+      <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+    </button>
+  }
+  @case ('iconText') {
+    <button mat-flat-button [type]="type" [class]="'flw-button flw-button-text-icon flw-button-' + size + ' flw-button-' + theme"
+        [class.flw-button-bold]="bold"
+        [class.flw-button-weight-medium]="weightMedium"
+        [class.flw-button-wide]="wide"
+        [disabled]="disabled"
+        (click)="buttonClicked.emit()">
+      @if (icon) { <mat-icon [inline]="true">{{ icon }}</mat-icon> }
+        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+      </button>
+  }
+}
+
+<ng-template #contentTpl><ng-content></ng-content></ng-template>

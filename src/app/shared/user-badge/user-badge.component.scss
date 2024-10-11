@@ -1,0 +1,74 @@
+@import 'variables';
+@import 'mixins';
+
+$small-size: 43px;
+$large-size: 57px;
+$container-padding: 7px;
+$small-font-size: 14px;
+$large-font-size: 18px;
+$small-line-height: 18px;
+$large-line-height: 21px;
+$small-text-padding: 0 7px;
+$large-text-padding: 0 14px;
+
+.flw-user-badge {
+  display: flex;
+  flex-direction: row;
+  padding: $container-padding;
+}
+
+.flw-user-image {
+  width: $small-size;
+  height: $small-size;
+  vertical-align: middle;
+
+  > * {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include desktop-qhd-up {
+    width: $large-size;
+    height: $large-size;
+  }
+}
+
+.flw-user-info {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  font-size: $small-font-size;
+  line-height: $small-line-height;
+  padding: $small-text-padding;
+  justify-content: center;
+
+  @include desktop-qhd-up {
+    font-size: $large-font-size;
+    line-height: $large-line-height;
+    padding: $large-text-padding;
+  }
+}
+
+.flw-user-name {
+  font-family: $medium-font-family;
+  // TODO remove after adding font
+  font-weight: 600;
+}
+
+.flw-user-email {
+  font-family: $light-font-family;
+  // TODO remove after adding font
+  font-weight: 300;
+}
+
+.flw-user-name,
+.flw-user-mail {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flw-user-logout {
+  vertical-align: middle;
+}

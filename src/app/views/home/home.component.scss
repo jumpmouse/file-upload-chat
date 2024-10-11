@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'mixins';
+
+.flw-home {
+  padding: 14px 32px;
+
+  @include desktop-uhd-up {
+    padding: 32px;
+  }
+}

@@ -1,0 +1,158 @@
+@import 'variables';
+@import 'mixins';
+
+$small-text-ratio: 0.5;
+$medium-text-ratio: 0.67;
+$sublarge-text-ratio: 0.8;
+
+:host {
+  display: block;
+}
+
+.header.header-title {
+  text-align: center;
+  font-weight: bold;
+
+  &.header-large {
+    font-size: ($header-large-font-size * $small-text-ratio);
+    line-height: ($header-large-line-height * $small-text-ratio);
+
+    @include small-desktop-up {
+      font-size: calc($header-large-font-size * $medium-text-ratio);
+      line-height: calc($header-large-line-height * $medium-text-ratio);
+    }
+
+    @include desktop-qhd-up {
+      font-size: calc($header-large-font-size * $sublarge-text-ratio);
+      line-height: calc($header-large-line-height * $sublarge-text-ratio);
+    }
+
+    @include desktop-uhd-up {
+      font-size: #{$header-large-font-size};
+      line-height: #{$header-large-line-height};
+    }
+  }
+
+  &.header-medium {
+    font-size: ($header-medium-font-size * $small-text-ratio);
+    line-height: ($header-medium-line-height * $small-text-ratio);
+
+    @include small-desktop-up {
+      font-size: calc($header-medium-font-size * $medium-text-ratio);
+      line-height: calc($header-medium-line-height * $medium-text-ratio);
+    }
+
+    @include desktop-qhd-up {
+      font-size: calc($header-medium-font-size * $sublarge-text-ratio);
+      line-height: calc($header-medium-line-height * $sublarge-text-ratio);
+    }
+
+    @include desktop-uhd-up {
+      font-size: #{$header-medium-font-size};
+      line-height: #{$header-medium-line-height};
+    }
+  }
+
+  &.header-small {
+    font-size: ($header-small-font-size * $small-text-ratio);
+    line-height: ($header-small-line-height * $small-text-ratio);
+
+    @include small-desktop-up {
+      font-size: calc($header-small-font-size * $medium-text-ratio);
+      line-height: calc($header-small-line-height * $medium-text-ratio);
+    }
+
+    @include desktop-qhd-up {
+      font-size: calc($header-small-font-size * $sublarge-text-ratio);
+      line-height: calc($header-small-line-height * $sublarge-text-ratio);
+    }
+
+    @include desktop-uhd-up {
+      font-size: #{$header-small-font-size};
+      line-height: #{$header-small-line-height};
+    }
+  }
+
+  &.header-flat {
+    line-height: ($header-small-line-height * $medium-text-ratio);
+    margin-bottom: 0;
+
+    @include desktop-qhd-up {
+      line-height: calc($header-small-line-height * $sublarge-text-ratio);
+    }
+
+    @include desktop-uhd-up {
+      line-height: #{$header-small-line-height};
+    }
+  }
+
+  .header-subtitle {
+    margin-top: 11px;
+    font-size: ($header-small-font-size * $small-text-ratio);
+    line-height: ($header-small-line-height * $small-text-ratio);
+
+    @include small-desktop-up {
+      font-size: calc($header-small-font-size * $medium-text-ratio);
+      line-height: calc($header-small-line-height * $medium-text-ratio);
+    }
+
+    @include desktop-qhd-up {
+      font-size: calc($header-small-font-size * $sublarge-text-ratio);
+      line-height: calc($header-small-line-height * $sublarge-text-ratio);
+    }
+
+    @include desktop-uhd-up {
+      font-size: #{$header-small-font-size};
+      line-height: #{$header-small-line-height};
+    }
+  }
+}
+
+.header-text {
+  text-align: center;
+  font-size: calc($subtitle-medium-font-size * 0.6825);
+  line-height: calc($subtitle-medium-line-height * 0.6825);
+
+  @include small-desktop-up {
+    font-size: calc($subtitle-medium-font-size * $medium-text-ratio);
+    line-height: calc($subtitle-medium-line-height * $medium-text-ratio);
+    }
+
+  @include desktop-qhd-up {
+    font-size: calc($subtitle-medium-font-size * $sublarge-text-ratio);
+    line-height: calc($subtitle-medium-line-height * $sublarge-text-ratio);
+  }
+
+@include desktop-uhd-up {
+    font-size: #{$subtitle-medium-font-size};
+    line-height: #{$subtitle-medium-line-height};
+  }
+
+  &.header-small {
+    font-size: calc($subtitle-small-font-size * $medium-text-ratio);
+    line-height: calc($subtitle-small-line-height * $medium-text-ratio);
+
+    @include small-desktop-up {
+      font-size: calc($subtitle-small-font-size * $sublarge-text-ratio);
+      line-height: calc($subtitle-small-line-height * $sublarge-text-ratio);
+    }
+
+    @include desktop-qhd-up {
+      font-size: calc($subtitle-small-font-size * $sublarge-text-ratio);
+      line-height: calc($subtitle-small-line-height * $sublarge-text-ratio);
+    }
+
+    @include desktop-uhd-up {
+      font-size: #{$subtitle-small-font-size};
+      line-height: #{$subtitle-small-line-height};
+    }
+  }
+
+  &.header-color-darkgray {
+    color: #{$darkgray-color};
+  }
+
+  &.header-color-gray {
+    color: #{$gray-color};
+  }
+}

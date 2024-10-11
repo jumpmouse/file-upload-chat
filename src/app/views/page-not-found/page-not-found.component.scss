@@ -1,0 +1,41 @@
+@import 'mixins';
+
+.flw-not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 160px;
+  text-align: center;
+
+  @include desktop-qhd-up {
+    margin-top: 235px;
+  }
+
+  @include desktop-uhd-up {
+    margin-top: 320px;
+  }
+}
+
+.flw-not-found-large {
+  font-size: 174px;
+  line-height: 174px;
+  font-weight: bold;
+
+  @include desktop-uhd-up {
+    font-size: 228px;
+    line-height: 228px;
+  }
+}
+
+.flw-not-found-title {
+  font-size: 36px;
+  line-height: 39px;
+  margin-bottom: 71px;
+
+  @include desktop-uhd-up {
+    font-size: 46px;
+    line-height: 53px;
+    margin-bottom: 89px;
+  }
+}

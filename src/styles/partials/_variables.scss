@@ -1,0 +1,90 @@
+// GLOBAL
+// colors
+$background-color: #32363f;
+$backround-secondary-color: #6D7EA5;
+$backround-terciary-color: #455476;
+$container-background-color: #434c60;
+$container-surface-color: #445576;
+$container-surface-selected-color: #6c7fa5;
+$icon-button-background: #3B85F7;
+$text-button-background: #0387FF;
+$menu-divider-color: #707070;
+$hint-color: #9D9D9D;
+
+$base-text-color: #ffffff;
+$link-color: #3A7BE0;
+$message-color: #3C85F7;
+$lightgray-color: #9B9FA8;
+$gray-color: #B7B7B7;
+$darkgray-color:#AFB6BE;
+$darkest-color: #848484;
+$red-color: #FF6200;
+$success-color: #31FF00;
+$warning-color: #FFFF00;
+$filter-text-color: #C1B8B6;
+
+// TYPOGRAPHY
+// font
+$default-font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+// TODO add font
+// $medium-font-family: "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$medium-font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$light-font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+// body
+$body-large-font-size: 1.75rem;
+$body-large-line-height: 2.125rem;
+$body-sublarge-font-size: 1.375rem;
+$body-sublarge-line-height: 1.75rem;
+$body-medium-font-size: 1.125rem;
+$body-medium-line-height: 1.75rem;
+$body-small-font-size: 1rem;
+$body-small-line-height: 1.375rem;
+// header
+$header-large-font-size: 3.25rem;
+$header-large-line-height: 4rem;
+$header-medium-font-size: 2.875rem;
+$header-medium-line-height: 3.5rem;
+$header-small-font-size: 2.5rem;
+$header-small-line-height: 3rem;
+// title
+$title-large-font-size: 2.25rem;
+$title-large-line-height: 2.625rem;
+$title-sublarge-font-size: 2rem;
+$title-sublarge-line-height: 2.375rem;
+$title-medium-font-size: 1.75rem;
+$title-medium-line-height: 2.125rem;
+$title-small-font-size: 1.25rem;
+$title-small-line-height: 1.5rem;
+$title-xsmall-font-size: 0.875rem;
+$title-xsmall-line-height: 1.125rem;
+$subtitle-medium-font-size: 1.5rem;
+$subtitle-medium-line-height: 1.875rem;
+$subtitle-small-font-size: 1.125rem;
+$subtitle-small-line-height: 1.5rem;
+// label
+$label-small-font-size: 0.875rem;
+$label-small-line-height: 1.125rem;
+// COMPONENTS
+// content container and sidenav
+$content-mobile-top-padding: 27px;
+$content-top-padding: 49px;
+// snackbar
+$snackbar-medium-font-size: 0.875rem;
+$snackbar-medium-line-height: 1.25rem;
+$snackbar-large-font-size: 1.125rem;
+$snackbar-large-line-height: 1.5rem;
+// toolbar container
+$toolbar-height: 98px;
+$toolbar-side-padding: 67px;
+$toolbar-small-desktop-side-padding: 36px;
+$toolbar-tablet-height: 57px;
+$toolbar-mobile-height: 50px;
+// sidenav container
+$sidenav-width: 320px;
+$sidenav-content-side-padding: 16px;
+$sidenav-content-bottom-padding: 16px;
+// footer container
+$footer-small-height: 32px;
+$footer-small-padding: 16px;
+$footer-height: 71px;
+$footer-padding: 36px;

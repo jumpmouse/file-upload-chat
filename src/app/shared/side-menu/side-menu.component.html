@@ -1,0 +1,55 @@
+@if (userLoggedIn | async) {
+<div class="flw-side-menu">
+  <div class="flw-side-menu-header">
+    <flw-circular-content [type]="'image'"
+        [withBackground]="true"
+        [size]="'small'"
+        [content]="logoImage"></flw-circular-content>
+  </div>
+  <div class="flw-menu">
+    @for (route of menuRoutes; track route.displayName) {
+    <flw-link class="flw-menu-item"
+        [route]="route.path"
+        [menuLink]="true">
+      <mat-icon>{{route.icon}}</mat-icon>
+      <span class="flw-menu-item-text">{{route.displayName}}</span>
+    </flw-link>
+    }
+  </div>
+  <div class="flw-side-menu-divider"></div>
+  <div class="flw-side-menu-footer">
+    @if (userData) {
+    <flw-user-badge [user]="userData"
+        (onClick)="logout()"></flw-user-badge>
+    }
+  </div>
+</div>
+} @else {
+<div class="flw-side-menu flw-side-menu-logged-out">
+  <flw-circular-content [type]="'image'"
+      [size]="'large'"
+      [blockElement]="true"
+      [content]="logoImage"
+      class="flw-side-menu-logo"></flw-circular-content>
+  <div class="flw-side-menu-title">
+    <div class="flw-side-menu-title-small"
+        i18n="side menu - unregistered|part of the title - Welcome to Falcon Link">Welcome to</div>
+    <div class="flw-side-menu-title-large">Falcon Link</div>
+  </div>
+  <div class="flw-side-menu-content">
+    <div class="flw-side-menu-content-text"
+        i18n="side menu - unregistered|text - part 1">Falcon Cloud allows you to send and receive</div>
+    <div class="flw-side-menu-content-text"
+        i18n="side menu - unregistered|text - part 2">medical exams directly to your Mac, iPhone</div>
+    <div class="flw-side-menu-content-text flw-side-menu-content-text-last"
+        i18n="side menu - unregistered|text - part 3">and iPad!</div>
+    <div class="flw-side-menu-content-headline"
+        i18n="side menu - unregistered|text - part 4">Fast, Secure & Easy!</div>
+  </div>
+  <div class="flw-side-menu-actions">
+    <flw-button [flavor]="'iconText'"
+        [size]="'medium'"
+        (buttonClicked)="navigateTo(['/', 'login'])"><ng-container i18n="button">Login</ng-container></flw-button>
+  </div>
+</div>
+}

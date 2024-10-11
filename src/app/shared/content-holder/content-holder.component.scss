@@ -1,0 +1,87 @@
+@import "mixins";
+@import "variables";
+
+$content-mobile-side-padding: 18px;
+$content-side-padding: 31px;
+$panel-padding-bottom: 27px;
+$panel-gap: 27px;
+$desktop-up-panel-gap: 49px;
+
+.content-container {
+    padding: $content-mobile-top-padding $content-mobile-side-padding 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: $panel-gap;
+    margin: 0 auto;
+    min-height: calc(100vh - ($toolbar-mobile-height + $footer-small-height + 14px));
+
+    @include tablet-up {
+      min-height: calc(100vh - ($toolbar-tablet-height + $footer-small-height + 14px));
+    }
+  
+    @include desktop-hd {
+      max-width: 1300px;
+    }
+
+    @include desktop-qhd-up {
+      padding: $content-top-padding $content-side-padding 0;
+      gap: $desktop-up-panel-gap;
+      max-width: 1711px;
+      min-height: calc(100vh - ($toolbar-height + $footer-height + 8px));
+    }
+
+    @include large-desktop-up {
+      max-width: 1780px;
+    }
+
+    @include desktop-uhd-up {
+      max-width: 2077px;
+    }
+  }
+
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  height: 100%;
+  align-items: flex-start;
+  padding-bottom: $panel-padding-bottom;
+}
+
+.left-panel-container {
+  display: none;
+
+  @include small-desktop-up {
+    display: flex;
+    flex: 9;
+  }
+}
+
+.right-panel-container {
+  flex: 1;
+  overflow: hidden;
+  height: 842px;
+
+  @include small-desktop-up {
+    flex: 24;
+    height: 730px;
+  }
+
+  @include desktop-up {
+    padding-bottom: 11px;
+  }
+
+  @include desktop-hd {
+    height: 729px;
+  }
+
+  @include desktop-qhd {
+    height: 908px;
+  }
+
+  @include desktop-uhd-up {
+    height: 1202px;
+  }
+}

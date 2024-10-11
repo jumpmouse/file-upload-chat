@@ -1,0 +1,158 @@
+<div class="flw-register">
+  @switch (registrationState) {
+    @case ('register') {
+      <flw-page-title class="flw-register-title"><ng-container i18n="page title">Register</ng-container></flw-page-title>
+      <div class="flw-content">
+        <form [formGroup]="registerForm"
+            (submit)="registerUser()"
+            class="flw-register-form">
+          <div class="flw-form-field-container">
+            <div class="flw-form-field-label" i18n="register|input label">email</div>
+            <mat-form-field class="flw-form-field"
+                appearance="outline">
+              <input matInput
+                  maxlength="100"
+                  formControlName="email"
+                  required>
+              @if (registerForm.controls.email.touched && registerForm.controls.email.invalid) {
+                <mat-error>
+                  @if (registerForm.controls.email.errors?.required) { <span i18n>Required</span> }
+                  @if (registerForm.controls.email.errors?.email) { <span i18n>Please, enter vaild email.</span> }
+                </mat-error>
+                }
+            </mat-form-field>
+          </div>
+          <div class="flw-form-field-container">
+            <div class="flw-form-field-label" i18n="register|input label">contact number</div>
+            <mat-form-field class="flw-form-field"
+                appearance="outline">
+              <input matInput
+                  formControlName="phoneNumber"
+                  maxlength="120"
+                  required>
+              <mat-hint><ng-container i18n="phone number format hint">in format: +1-XXX-XXX-XXXX</ng-container></mat-hint>
+              @if (registerForm.controls.phoneNumber.touched && registerForm.controls.phoneNumber.errors?.pattern) {
+                <mat-error>
+                  <span i18n>Invalid phone number</span>
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="flw-form-field-container">
+            <div class="flw-form-field-label" i18n="register|input label">new password</div>
+            <mat-form-field class="flw-form-field"
+                appearance="outline">
+              <input matInput
+                  maxlength="100"
+                  formControlName="password"
+                  type="password"
+                  required>
+              @if (registerForm.controls.password.touched && registerForm.controls.password.invalid) {
+                <mat-error>
+                  @if (registerForm.controls.password.errors?.required) { <span i18n>Required</span> }
+                </mat-error>
+                }
+            </mat-form-field>
+          </div>
+          <div class="flw-form-field-container flw-form-field-container-last">
+            <div class="flw-form-field-label" i18n="register|input label">enter password again</div>
+            <mat-form-field class="flw-form-field"
+                appearance="outline">
+              <input matInput
+                  maxlength="100"
+                  formControlName="confirmPassword"
+                  type="password"
+                  required>
+              @if (registerForm.controls.confirmPassword.touched && registerForm.controls.confirmPassword.invalid) {
+                <mat-error>
+                  @if (registerForm.controls.confirmPassword.errors?.required) { <span i18n>Required</span> }
+                </mat-error>
+                }
+            </mat-form-field>
+          </div>
+          <div class="flw-form-info-container">
+            <div class="flw-form-info">
+              <div class="flw-form-info-hint" i18n>
+                You password must be at least 10 characters long, include a number, an uppercase letter and a special character.
+              </div>
+              <mat-error>
+                @if (registerForm.controls.password.touched && !passwordsMatch) {<ng-container i18n>passwords do not match</ng-container>}
+              </mat-error>
+            </div>
+          </div>
+          <div class="flw-content-actions flw-content-action-submit">
+            <flw-button [flavor]="'iconText'"
+                type="button"
+                [size]="'medium'"
+                (buttonClicked)="goBack()"
+                [disabled]="registering">
+              <ng-container i18n="button">Back</ng-container>
+            </flw-button>
+            <flw-button [flavor]="'iconText'"
+                type="submit"
+                [size]="'medium'"
+                [wide]="true"
+                [disabled]="registering || !registerForm.controls.password.touched || !registerForm.valid || !passwordsMatch">
+                @if (registering) {<mat-spinner class="flw-button-spinner" [diameter]="20"></mat-spinner>}
+              <ng-container i18n="button">Continue</ng-container>
+            </flw-button>
+          </div>
+        </form>
+      </div>
+    }
+    @case ('verify') {
+      <flw-page-title class="flw-register-title flw-code-title"><ng-container i18n="page title">Register</ng-container></flw-page-title>
+      <div class="flw-content flw-code-content">
+        <div class="flw-register-code-info">
+          <span class="flw-register-code-info-text" i18n>We have sent a verification code to</span>
+          <span class="flw-register-code-info-email">&nbsp;{{ userEmail }}</span>
+        </div>
+        <div class="flw-register-code-title" i18n>Enter verification code</div>
+        <ng-otp-input  [formCtrl]="otpInputFormControl"  [config]="otpInputConfig" class="flw-otp-input-field"></ng-otp-input>
+        <div class="flw-register-code-link">
+          <flw-link [theme]="'gray'" [underline]="true" (linkClicked)="sendEmailCode()">
+            <ng-container i18n>Resend verification code</ng-container>
+          </flw-link>
+        </div>
+        <div class="flw-register-code-content" i18n>Please also check your spam folder</div>
+        <div class="flw-content-actions flw-content-action-code-submit">
+          <flw-button [flavor]="'iconText'"
+              type="button"
+              [size]="'medium'"
+              (buttonClicked)="goStateBack()"
+              [disabled]="verifying">
+            <ng-container i18n="button">Back</ng-container>
+          </flw-button>
+          <flw-button [flavor]="'iconText'"
+              type="button"
+              [icon]="'add_moderator'"
+              [size]="'medium'"
+              [wide]="true"
+              [disabled]="verifying || otpInputFormControl.invalid"
+              (buttonClicked)="verifyEmailCode()">
+              <ng-container i18n="button">Create Account</ng-container>
+            </flw-button>
+        </div>
+        <div class="flw-register-code-footer">
+          <ng-container i18n="terms and conditions|part 1">By clicking "Create Account" you accept the</ng-container>&nbsp;
+          <flw-link [theme]="'white'" [underline]="true" [href]="'https://www.icat.solutions/termsandconditions'">
+            <ng-container i18n="terms and conditions|part 2">Terms & Conditions</ng-container>
+          </flw-link>
+        </div>
+      </div>
+    }
+    @default {
+      <div class="flw-content flw-verified-content">
+        <div class="flw-verfied-icon-holder">
+          <mat-icon class="flw-verfied-icon">celebration</mat-icon>
+        </div>
+        <div class="flw-verified-text" i18n>Your account has been created!</div>
+        <div class="flw-content-actions flw-content-action-verify">
+          <flw-button [flavor]="'iconText'"
+          [size]="'medium'"
+          (buttonClicked)="goToLogin()"><ng-container i18n="button">Login</ng-container></flw-button>
+        </div>
+      </div>
+    }
+  }
+</div>

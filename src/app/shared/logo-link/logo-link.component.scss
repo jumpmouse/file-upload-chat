@@ -1,0 +1,23 @@
+@import 'mixins';
+
+.logo-link {
+  cursor: pointer;
+}
+
+.logo-link-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo-text {
+  vertical-align: middle;
+  margin-inline-start: 9px;
+
+  @include small-desktop-up {
+    margin-inline-start: 18px;
+  }
+
+  @include desktop-up {
+    margin-inline-start: 27px;
+  }
+}

@@ -1,0 +1,25 @@
+@import 'mixins';
+
+.flw-transactions {
+  padding: 14px;
+
+  @include desktop-qhd-up {
+    padding: 14px 32px;
+  }
+
+  @include desktop-uhd-up {
+    padding: 32px;
+  }
+}
+
+.flw-transactions-title {
+  margin-bottom: 18px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 23px;
+  }
+
+  @include desktop-uhd-up {
+    margin-bottom: 41px;
+  }
+}

@@ -1,0 +1,27 @@
+@import 'mixins';
+
+$store-image-height: 46px;
+$desktop-up-store-image-height: 64px;
+$store-image-padding: 0 7px 14px;
+
+:host {
+  width: 100%;
+}
+
+.app-store-badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.app-store-image {
+  height: $store-image-height;
+  padding: $store-image-padding;
+  cursor: pointer;
+
+  @include desktop-qhd-up {
+    height: $desktop-up-store-image-height;
+  }
+}

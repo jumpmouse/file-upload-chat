@@ -1,0 +1,13 @@
+@import 'mixins';
+
+$panel-card-margin-bottom: 21px;
+$desktop-up-panel-card-margin-bottom: 41px;
+
+.panel-card {
+  display: block;
+  margin-bottom: $panel-card-margin-bottom;
+
+  @include desktop-qhd-up {
+    margin-bottom: $desktop-up-panel-card-margin-bottom;
+  }
+}

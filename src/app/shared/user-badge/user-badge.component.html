@@ -1,0 +1,12 @@
+<div class="flw-user-badge">
+  <div class="flw-user-image">
+    <flw-circular-content [size]="'small'" [content]="initials"></flw-circular-content>
+  </div>
+  <div class="flw-user-info">
+    <div class="flw-user-name">{{ user.firstName }} {{ user.lastName }}</div>
+    <div class="flw-user-mail">{{ user.email }}</div>
+  </div>
+  <div class="flw-user-logout">
+    <flw-button [flavor]="'iconTransparent'" icon="logout" size="medium" (buttonClicked)="logout()"></flw-button>
+  </div>
+</div>

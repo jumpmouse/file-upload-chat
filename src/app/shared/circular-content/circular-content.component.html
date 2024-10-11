@@ -1,0 +1,20 @@
+@if (type === 'text') {
+  <div [class]="'circular-content-container content-type-text ' + size"
+  [class.block-element]="blockElement">
+<div class="content">
+  @if (content) {
+    <span class="circular-content-text">{{ content | uppercase }}</span>
+  } @else {
+    <span class="circular-content-text"><mat-icon>person</mat-icon></span>
+  }
+</div>
+</div>
+} @else if (type === 'image') {
+  <div [class]="'circular-content-container content-type-image ' + size"
+      [class.with-background]="withBackground"
+      [class.block-element]="blockElement"
+      [class.adjust-for-mobile]="mobileAdjust">
+    <img class="content circular-content-image"
+        [src]="content" />
+  </div>
+}

@@ -1,0 +1,119 @@
+@import 'variables';
+@import 'mixins';
+
+$link-theme-blue: #{$link-color};
+$link-theme-gray: #{$gray-color};
+$link-theme-darkgray: #{$darkgray-color};
+$link-theme-red: #{$red-color};
+$link-theme-white: #{$base-text-color};
+$link-hover-opacity: 0.7;
+
+.flw-link {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    opacity: $link-hover-opacity;
+  }
+}
+
+.flw-menu-link {
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  line-height: 57px;
+  border-radius: 26px;
+  color: $lightgray-color;
+  padding: 0 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  outline: none;
+
+  &-active {
+    box-shadow: inset 0px 0.5px 1px #00000029, 0px 3px 6px #00000029;
+    color: $base-text-color;
+    font-weight: bold;
+  }
+
+  @include desktop-qhd-up {
+    line-height: 77px;
+    padding: 0 18px;
+  }
+}
+
+.link-underline {
+  text-decoration: underline;
+
+  &:active,
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link-bold {
+  font-weight: bold;
+}
+
+.theme-blue {
+  color: $link-theme-blue;
+
+  &:active,
+  &:hover {
+    color: $link-theme-blue;
+  }
+}
+
+.theme-gray {
+  color: $link-theme-gray;
+
+  &:active,
+  &:hover {
+    color: $link-theme-gray;
+  }
+}
+
+.theme-darkgray {
+  color: $link-theme-darkgray;
+
+  &:active,
+  &:hover {
+    color: $link-theme-darkgray;
+  }
+}
+
+.theme-white {
+  color: $link-theme-white;
+
+  &:active,
+  &:hover {
+    color: $link-theme-white;
+  }
+}
+
+.theme-red {
+  color: $link-theme-red;
+
+  &:active,
+  &:hover {
+    color: $link-theme-red;
+  }
+}
+
+.theme-inherit {
+  color: inherit;
+
+  &:active,
+  &:hover {
+    color: inherit;
+  }
+}
+
+.theme-none {
+  &:active,
+  &:hover {
+    color: inherit;
+  }
+}

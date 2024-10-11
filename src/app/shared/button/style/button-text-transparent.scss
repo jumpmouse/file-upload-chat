@@ -1,0 +1,52 @@
+@use './button-mixins';
+
+@import 'variables';
+
+$_responsive-variables: (
+  mobile-up: (
+    font-size-small: 16px,
+    font-size-medium: 18px,
+    font-size-large: 21px,
+    line-height-small: 21px,
+    line-height-medium: 25px,
+    line-height-large: 30px,
+    height-small: 21px,
+    height-medium: 32px,
+    height-large: 41px,
+  ),
+  tablet-up: (
+    font-size-small: 16px,
+    font-size-medium: 18px,
+    font-size-large: 21px,
+    line-height-small: 21px,
+    line-height-medium: 25px,
+    line-height-large: 30px,
+    height-small: 21px,
+    height-medium: 32px,
+    height-large: 41px,
+  ),
+  large-desktop-up: (
+    font-size-small: 23px,
+    font-size-medium: 28px,
+    font-size-large: 40px,
+    line-height-small: 28px,
+    line-height-medium: 34px,
+    line-height-large: 48px,
+    height-small: 28px,
+    height-medium: 48px,
+    height-large: 62px,
+  ),
+);
+$_sizes: small, medium, large;
+$_breakpoints: mobile-up, tablet-up, large-desktop-up;
+
+$button-border-radius: 15px;
+$button-padding: 0 18px;
+
+.flw-button-text {
+  --mdc-text-button-container-shape: #{$button-border-radius};
+
+  padding: $button-padding;
+
+  @include button-mixins.button-breakpoint-classes(text, $_responsive-variables, $_breakpoints, $_sizes);
+}

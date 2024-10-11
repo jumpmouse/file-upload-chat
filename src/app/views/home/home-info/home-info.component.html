@@ -1,0 +1,39 @@
+<div class="flw-home-info">
+  @if ((userLoggedIn$ | async) && (userData$ | async)) {
+    <flw-page-title><ng-container i18n="page title">Hi</ng-container>
+      @if ((userData$ | async)?.firstName) {<span>, {{(userData$ | async)?.firstName}}</span>}!
+    </flw-page-title>
+  } @else {
+    <flw-page-title><ng-container i18n="page title">Hello!</ng-container></flw-page-title>
+  }
+  <flw-page-title class="flw-home-subtitle"><ng-container i18n="page subtitle">Where would you like to send files to, today?</ng-container></flw-page-title>
+  <div class="flw-home-falcon-link-container">
+    <div class="flw-form-field-label"
+        i18n="home page|input label">Send to:</div>
+    <mat-form-field class="flw-form-field"
+        appearance="outline">
+      <input matInput
+          maxlength="120"
+          i18n-placeholder
+          placeholder="Enter the Falcon Link you want to send files to"
+          (keyup.enter)="getDoctorInfo()"
+          [formControl]="falconLinkControl">
+      <mat-hint class="flw-form-field-hint">www.horos.link/xxxxxxxx</mat-hint>
+    </mat-form-field>
+    <div class="flw-form-field-actions">
+      <flw-button [flavor]="'iconText'"
+          [icon]="'send'"
+          [size]="'medium'"
+          (buttonClicked)="getDoctorInfo()"
+          [disabled]="!falconLinkControl.value">
+        <ng-container i18n="button">Send</ng-container>
+      </flw-button>
+    </div>
+  </div>
+  @if (userLoggedIn$ | async) {
+    <div class="flw-home-bottom-container">
+      <div class="flw-home-bottom-title" i18n>Recently sent</div>
+      <flw-recent-sent-table [data]="recentlySentData$" (recentMagicLink)="applyRecentMagicLink($event)"></flw-recent-sent-table>
+    </div>
+  }
+</div>

@@ -1,0 +1,79 @@
+<div class="flw-login">
+  <flw-page-title class="flw-login-title"><ng-container i18n="page title">Log In</ng-container></flw-page-title>
+  <div class="flw-content">
+    <form [formGroup]="loginForm"
+        class="flw-login-form"
+        (submit)="login()">
+      <div class="flw-form-field-container">
+        <div class="flw-form-field-label" i18n="login|input label">email</div>
+        <mat-form-field class="flw-form-field"
+            appearance="outline">
+          <input matInput
+              formControlName="login"
+              maxlength="100"
+              required>
+          @if (loginForm.controls.login.touched && loginForm.controls.login.invalid) {
+            <mat-error>
+              @if (loginForm.controls.login.errors?.email) { <span i18n>Please, enter vaild email.</span> }
+              @if (loginForm.controls.login.errors?.required) { <span i18n>Required</span> }
+            </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="flw-form-field-container flw-form-field-container-last">
+        <div class="flw-form-field-label" i18n="login|input label">password</div>
+        <mat-form-field class="flw-form-field"
+            appearance="outline">
+          <input matInput
+              maxlength="100"
+              formControlName="password"
+              type="password"
+              required>
+          @if (loginForm.controls.password.touched && loginForm.controls.password.invalid) {
+            <mat-error>
+              @if (loginForm.controls.password.errors?.required) { <span i18n>Required</span> }
+            </mat-error>
+            }
+        </mat-form-field>
+      </div>
+      <div class="flw-form-info-container">
+        <div class="flw-form-info">
+          <mat-error>
+            @if (loginError$ | async) { {{errorMessage}} }
+          </mat-error>
+        </div>
+        <flw-link class="flw-form-info-link"
+            [route]="['/', 'forgot-password']"
+            [theme]="'gray'"
+            [underline]="true">
+          <ng-container i18n>Forgot password?</ng-container>
+        </flw-link>
+      </div>
+      <div class="flw-content-actions flw-content-action-submit">
+        <flw-button [flavor]="'iconText'"
+            type="submit"
+            [size]="'medium'"
+            [wide]="true">
+          @if (loading$ | async) {<mat-spinner class="flw-button-spinner" [diameter]="20"></mat-spinner>}
+          <ng-container i18n="button">Log in</ng-container>
+        </flw-button>
+      </div>
+      <div class="flw-content-actions">
+        <flw-button [flavor]="'iconText'"
+            [size]="'medium'"
+            (buttonClicked)="goHome()">
+          <ng-container i18n="button">Cancel</ng-container>
+        </flw-button>
+      </div>
+    </form>
+    <div class="flw-login-actions">
+      <ng-container i18n="login screen|create account part 1">Don’t have an account?</ng-container>&nbsp;
+      <flw-link class="flw-login-actions-link"
+        [route]="['/', 'register']"
+        [theme]="'white'"
+        [underline]="true">
+      <ng-container i18n="login screen|create account part 2">Create one</ng-container>
+    </flw-link>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+@import "variables";
+@import "mixins";
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: $sidenav-width;
+}
+
+.sidenav-content-container {
+  width: 100%;
+  padding: calc($toolbar-mobile-height + $content-mobile-top-padding) $sidenav-content-side-padding $sidenav-content-bottom-padding;
+
+  @include tablet-up {
+    padding-top: calc($toolbar-tablet-height + $content-mobile-top-padding);
+  }
+
+  @include large-desktop-up {
+    padding-top: calc($toolbar-height + $content-top-padding);
+  }
+}
+
+.mat-toolbar {
+  padding: 0;
+
+  @include desktop-qhd-up {
+    height: $toolbar-height;
+  }
+
+  .flw-toolbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 11px;
+
+    @include small-desktop-up {
+      padding: 0 $toolbar-small-desktop-side-padding;
+    }
+
+    @include large-desktop-up {
+      max-width: 1958px;
+    }
+
+    @include desktop-uhd-up {
+      max-width: 2077px;
+    }
+  }
+
+  .mat-icon {
+    vertical-align: top;
+  }
+}
+
+.flw-toolbar-menu-button {
+  margin-inline-end: 11px;
+}
+
+.logo-text {
+  display: inline-block;
+}
+
+.logo-link {
+  flex: 1;
+}
+
+.flw-footer-outer {
+  width: 100%;
+  margin: 0 auto;
+
+  @include large-desktop-up {
+    max-width: 1958px;
+  }
+
+  @include desktop-uhd-up {
+    max-width: 2077px;
+  }
+}
+
+.flw-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: $footer-small-height;
+  padding: $footer-small-padding 0;
+  width: 100%;
+  margin-bottom: 5px;
+
+  > * {
+    font-size: 11px;
+    line-height: 16px;
+    padding: 0 32px;
+  }
+
+  .flw-footer-made-in {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border-inline-end: 2px solid $base-text-color;
+    padding-inline-start: 0;
+  
+    > img {
+      height: 28px;
+    }
+  }
+
+  @include tablet-up {
+    > * {
+      font-size: 12px;
+      line-height: 18px;
+      padding: 0 21px;
+    }
+  }
+
+  @include small-desktop-up {
+    > * {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  @include desktop-qhd-up {
+    padding: $footer-padding;
+    height: $footer-height;
+    width: 100%;
+    max-width: 1157px;
+
+    > * {
+      font-size: 18px;
+      line-height: 21px;
+      padding: 0 32px;
+    }
+  }
+
+  @include large-desktop-up {
+    padding: $footer-padding $footer-padding $footer-padding 0;
+  }
+}

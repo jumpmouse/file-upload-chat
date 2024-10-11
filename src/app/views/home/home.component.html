@@ -1,0 +1,22 @@
+<div class="flw-home">
+  @switch (homeScreenState$ | async) {
+  @case ('info') {
+    <flw-home-info [userData$]="userData$"
+        [userLoggedIn$]="userLoggedIn$"
+        [recentlySentData$]="recentlySentData$"
+        (sendMagicLink)="getDoctorInfo($event)"></flw-home-info>
+  }
+  @case ('upload') {
+    <flw-home-upload [doctorInfo]="doctorInfo"
+        [userData]="userData"
+        [userLoggedIn$]="userLoggedIn$"
+        (sendFiles)="setFileList($event)"></flw-home-upload>
+  }
+  @case ('progress') {
+    <flw-home-progress [senderDetailsForm]="senderDetails"
+      [magicLink]="magicLink"
+      [doctorInfo]="doctorInfo"
+      (transferCanceled)="resetTransfer()"></flw-home-progress>
+  }
+}
+</div>

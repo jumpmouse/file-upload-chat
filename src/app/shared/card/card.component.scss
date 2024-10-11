@@ -1,0 +1,64 @@
+@import 'variables';
+@import 'mixins';
+
+$radius: 30px;
+$shadow: 0px 3px 6px #00000029;
+$shadow-alt: 0px -3px 6px #0000001A;
+$shadow-double: 0px -3px 6px #0000001A, 0px 1px 2px #0000001A;
+
+// default
+$container-radius: #{$radius};
+$container-shadow: #{$shadow};
+// table
+$type-table-container-shadow: #{$shadow-double};
+// used space
+$type-space-container-shadow: #{$shadow-alt};
+// info
+$type-info-container-shadow: #{$shadow};
+// message
+$type-message-container-shadow: #{$shadow};
+
+:host {
+  width: 100%;
+}
+
+:host([type="content-panel"]) {
+  height: 100%;
+
+  .flw-card {
+    height: 100%;
+  }
+}
+
+.flw-card {
+  // for default, menu-panel and content-panel
+  --mdc-elevated-card-container-shape: #{$container-radius};
+  --mdc-elevated-card-container-elevation: #{$container-shadow};
+
+  &-table {
+    --mdc-elevated-card-container-elevation: #{$type-table-container-shadow};
+  }
+
+  &-used-space {
+    --mdc-elevated-card-container-elevation: #{$type-space-container-shadow};
+    --mdc-elevated-card-container-color: #{$backround-terciary-color};
+  }
+
+  &-info {
+    --mdc-elevated-card-container-elevation: #{$type-info-container-shadow};
+    --mdc-elevated-card-container-color: #{$backround-secondary-color};
+  }
+
+  &-message {
+    --mdc-elevated-card-container-elevation: #{$type-message-container-shadow};
+  }
+
+  &-message-events {
+    --mdc-elevated-card-container-elevation: #{$type-message-container-shadow};
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+
+    @include scrollbars;
+  }
+}

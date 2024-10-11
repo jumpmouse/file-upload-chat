@@ -1,0 +1,28 @@
+@import 'variables';
+@import 'mixins';
+
+.language-select {
+  --mdc-filled-text-field-container-color: #{$background-color};
+  display: inline-flex;
+  vertical-align: middle;
+
+  > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.language-image {
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-inline-end: 11px;
+
+  @include desktop-qhd-up {
+    height: 40px;
+    width: 40px;
+  }
+}

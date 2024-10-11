@@ -1,0 +1,88 @@
+<div class="flw-transaction-details-back-link">
+  <flw-button class="flw-transaction-details-back-link-button"
+      [flavor]="'iconOutlined'"
+      [icon]="'chevron_left'"
+      [size]="'small'"
+      theme="blue"
+      (buttonClicked)="goBack()"></flw-button>
+  <div class="flw-transaction-details-breadcrumb"
+      (click)="goBack()"><span><ng-container i18n="transaction details|breadcrumb - in form: Transaction History > {doctors_name}; NOTE - reverse arrow on rtl languages">Transaction History ></ng-container> {{ doctorName }}</span></div>
+</div>
+<div class="flw-transaction-details-tab-switcher">
+  <mat-button-toggle-group class="flw-transaction-details-tabs"
+      name="transaction-details"
+      [hideSingleSelectionIndicator]="true"
+      (change)="changeTab($event)">
+    <mat-button-toggle #DefaultTab
+        value="details"
+        [checked]="true"><span i18n>Details</span></mat-button-toggle>
+    <mat-button-toggle value="messages"><span i18n>Messages</span></mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+<mat-tab-group animationDuration="0ms"
+    [selectedIndex]="selectedTab">
+  <mat-tab label="details">
+    <flw-card type="table"
+        class="flw-details-card">
+      <div class="mat-elevation-z0 flw-details-card-content">
+        <div class="flw-details-row">
+          <div class="flw-details-row-title"><span i18n>Email:</span></div>
+          <div class="flw-details-row-value">{{doctorInfo?.email}}</div>
+        </div>
+
+        <div class="flw-details-row">
+          <div class="flw-details-row-title"><span i18n>Uploaded on:</span></div>
+          <div class="flw-details-row-value">{{transaction?.createdDate | date}}, {{transaction?.createdDate | date:'hh:mm'}} UTC</div>
+        </div>
+        @if (transaction?.deletedDate) {
+          <div class="flw-details-row">
+            <div class="flw-details-row-title"><span i18n>Deleted on:</span></div>
+            <div class="flw-details-row-value">{{transaction?.deletedDate | date}}, {{transaction?.deletedDate | date:'hh:mm'}} UTC</div>
+          </div>
+        }
+        <div class="flw-details-row">
+          @if (!transactionExpired) {
+            <div class="flw-details-row-title flw-details-cell-green"><span i18n>Expires:</span></div>
+            <div class="flw-details-row-value flw-details-cell-green">{{ expiresIn }}</div>
+          } @else {
+            <div class="flw-details-row-title"><span i18n>Expired:</span></div>
+            <div class="flw-details-row-value">{{ expiresIn }}</div>
+          }
+        </div>
+        <div class="flw-details-row">
+          <div class="flw-details-row-title"><span i18n>File size:</span></div>
+          <div class="flw-details-row-value flw-details-row-value-big">{{(transaction?.sizeInKb | fileSize) || '0KB'}}
+          </div>
+        </div>
+        <div class="flw-details-row flw-details-row-top">
+          <div class="flw-details-row-title flw-details-row-title-message"><span i18n>Message:</span></div>
+          <div class="flw-details-row-value-message scrollbar-thin">
+            @if (transaction?.message) { {{transaction?.message}} }
+            @else { <span class="flw-details-row-value-message-empty" i18n>Message not provided</span> }
+          </div>
+        </div>
+        <div class="flw-details-actions-row">
+          <flw-button [flavor]="'textTransparent'"
+              [size]="'small'"
+              theme="red"
+              [bold]="true"
+              [disabled]="!!transaction?.deletedDate"
+              (buttonClicked)="confirmDeleteFile()"><span i18n="button">Delete this file</span></flw-button>
+        </div>
+      </div>
+    </flw-card>
+  </mat-tab>
+  <mat-tab label="messages">
+    <flw-card type="table"
+        class="flw-messages">
+      <div class="mat-elevation-z0">
+        <div class="flw-messages-placeholder">
+          <div class="flw-placeholder-image">
+            <mat-icon fontSet="material-icons-outlined">forum</mat-icon>
+          </div>
+          <div class="flw-placeholder-title"><span i18n>No Messages</span></div>
+        </div>
+      </div>
+    </flw-card>
+  </mat-tab>
+</mat-tab-group>

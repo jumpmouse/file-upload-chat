@@ -1,0 +1,24 @@
+@import 'mixins';
+
+:host {
+  width: 100%;
+}
+
+.flw-progress-bar {
+  border-radius: 12px;
+
+  @include tablet-up {
+    --mdc-linear-progress-active-indicator-height: 5px;
+    --mdc-linear-progress-track-height: 5px;
+  }
+
+  @include small-desktop-up {
+    --mdc-linear-progress-active-indicator-height: 9px;
+    --mdc-linear-progress-track-height: 9px;
+  }
+
+  @include desktop-qhd-up {
+    --mdc-linear-progress-active-indicator-height: 12px;
+    --mdc-linear-progress-track-height: 12px;
+  }
+}

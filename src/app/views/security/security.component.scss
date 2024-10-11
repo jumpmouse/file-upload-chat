@@ -1,0 +1,85 @@
+@import 'variables';
+@import 'mixins';
+
+.flw-security {
+  padding: 14px 32px;
+
+  @include desktop-uhd-up {
+    padding: 32px;
+  }
+}
+
+.flw-security-divider {
+  margin-bottom: 25px;
+}
+
+.flw-security-title {
+  margin-bottom: 80px;
+}
+
+.flw-security-form {
+  display: block;
+  margin-bottom: 52px;
+}
+
+.flw-content-actions {
+ text-align: start;
+}
+
+.flw-content-action-submit {
+  margin-bottom: 61px;
+  text-align: center;
+}
+
+.flw-form-field {
+  width: 100%;
+  display: block;
+}
+
+.flw-form-field-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flw-form-field-label {
+  min-width: 367px;
+  font-weight: bold;
+}
+
+.flw-form-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 46px;
+}
+
+.flw-form-info {
+  padding-inline-start: 381px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 21px;
+  line-height: 28px;
+  font-style: italic;
+}
+
+.flw-form-info-hint {
+  font-size: 16px;
+  line-height: 21px;
+  font-style: italic;
+  color: $backround-secondary-color;
+  white-space: normal;
+  margin-bottom: 14px;
+
+  @include desktop-qhd-up {
+    font-size: 21px;
+    line-height: 27px;
+  }
+}
+
+.flw-button-spinner {
+  display: inline-block;
+  margin-inline-end: 5px;
+}

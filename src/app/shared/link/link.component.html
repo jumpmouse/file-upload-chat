@@ -1,0 +1,28 @@
+@if (menuLink) {
+  <a [class]="'flw-menu-link theme-' + theme"
+      [class.link-underline]="underline"
+      [class.link-bold]="bold"
+      [routerLink]="route"
+      [routerLinkActive]="'flw-menu-link-active'"
+      [routerLinkActiveOptions]="(route && route.length > 1) ? {exact: false} : {exact: true}">
+    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+  </a>
+} @else if (href) {
+  <a [class]="'flw-link theme-' + theme"
+      [class.link-underline]="underline"
+      [class.link-bold]="bold"
+      [href]="href"
+      target="_blank'">
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</a>
+} @else {
+    <a [class]="'flw-link theme-' + theme"
+      [class.link-underline]="underline"
+      [class.link-bold]="bold"
+      [routerLink]="route"
+      (click)="onLinkClick($event)">
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</a>
+}
+
+<ng-template #contentTpl><ng-content></ng-content></ng-template>

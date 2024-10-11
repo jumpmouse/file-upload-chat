@@ -1,0 +1,241 @@
+@switch (screenState) {
+  @case ('sender-details') {
+    <flw-page-title [type]="'withSubtitle'"
+        [size]="'large'">
+      <ng-container i18n="page title">Send your files to</ng-container>
+      <ng-container id="subtitle"> {{doctorInfo?.doctorName}}</ng-container>
+    </flw-page-title>
+    <flw-page-title [type]="'text'"
+        [color]="'darkgray'">
+      <ng-container i18n="page subtitle">The maximum upload size is</ng-container>
+      <span> {{ (doctorInfo?.uploadLimitInKb | fileSize) || '0KB' }}</span>
+    </flw-page-title>
+    <div class="flw-content flw-home-upload-content">
+      <div class="flw-sender-details-form-container">
+        <form [formGroup]="senderDetailsForm"
+            class="flw-sender-details-form">
+          <div class="flw-form-field-container">
+            <div class="flw-form-field-label"
+                i18n="home upload page|input label">Your name*:</div>
+            <mat-form-field class="flw-form-field"
+                appearance="outline">
+              <input matInput
+                  formControlName="PatientName"
+                  [placeholder]="patientNamePlaceholder"
+                  maxlength="120">
+              @if (senderDetailsForm.controls.PatientName.touched && senderDetailsForm.controls.PatientName.invalid) {
+                <mat-error>
+                  @if (senderDetailsForm.controls.PatientName.errors?.required) { <span i18n>Required</span> }
+                </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="flw-form-field-container">
+            <div class="flw-form-field-label"
+                i18n="home upload page|input label">Your email*:</div>
+            <mat-form-field class="flw-form-field"
+                appearance="outline">
+              <input matInput
+                  formControlName="Email"
+                  maxlength="100">
+              @if (senderDetailsForm.controls.Email.touched && senderDetailsForm.controls.Email.invalid) {
+              <mat-error>
+                @if (senderDetailsForm.controls.Email.errors?.required) { <span i18n>Required</span> }
+                @if (senderDetailsForm.controls.Email.errors?.email) { <span i18n>Please, enter vaild Email.</span> }
+              </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="flw-form-field-container">
+            <div class="flw-form-field-label"
+                i18n="home upload page|input label">Your phone:</div>
+            <mat-form-field class="flw-form-field"
+                appearance="outline">
+              <input matInput
+                  formControlName="PhoneNumber"
+                  maxlength="120">
+              <mat-hint><ng-container i18n="phone number format hint">in format: +1-XXX-XXX-XXXX</ng-container></mat-hint>
+              @if (senderDetailsForm.controls.PhoneNumber.touched && senderDetailsForm.controls.PhoneNumber.errors?.pattern) {
+              <mat-error>
+                <span i18n>Invalid phone number</span>
+              </mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="flw-form-field-container">
+            <div class="flw-form-field-label"
+                i18n="home upload page|input label">Message:</div>
+            <mat-form-field class="flw-form-field"
+                [class.hide-hint]="!isUhdResolution"
+                appearance="outline">
+              <textarea matInput
+                  class="flw-message-textarea scrollbar-thin"
+                  formControlName="Message"
+                  [rows]="textAreaRows"
+                  maxlength="1000"></textarea>
+            </mat-form-field>
+          </div>
+        </form>
+        @if (!(userLoggedIn$ | async)) {
+          <div class="flw-sender-details-sidebar">
+            @if (showCreateAccountPopup) {
+              <div class="flw-create-account-popup">
+                <flw-card class="flw-create-account-card" type="info">
+                  <div class="flw-create-account-card-content">
+                    <p i18n="create account popup|part 1">
+                      We are asking for your email address so that we can send you important updates about the progress of your upload.
+                    </p>
+                    <p i18n="create account popup|part 2">
+                      You’ll need to verify your email so that we know it’s you. Don’t want to verify every time?
+                    </p>
+                    <br>
+                    <flw-button class="flw-create-account-action"
+                        [flavor]="'iconText'"
+                        [size]="'large'"
+                        [wide]="true"
+                        (buttonClicked)="goToSignIn()">
+                        <ng-container i18n="button">Create a free account</ng-container>
+                    </flw-button>
+                  </div>
+                </flw-card>
+                <div class="flw-create-account-pointer"></div>
+              </div>
+            }
+            <flw-button [flavor]="'iconBackground'"
+                [icon]="'question_mark'"
+                [size]="'medium'"
+                (buttonClicked)="showCreateAccountPopup = !showCreateAccountPopup"></flw-button>
+          </div>
+        }
+      </div>
+      <div class="flw-content-actions flw-sender-details-content-actions"
+          [class.flw-unregistered-user]="!(userLoggedIn$ | async)">
+        <div class="flw-content-action">
+          <span i18n="button">Add files</span>
+          <flw-button [flavor]="'iconBackground'"
+              [icon]="'add'"
+              [size]="'large'"
+              [matMenuTriggerFor]="aboveMenu"></flw-button>
+            <mat-menu #aboveMenu="matMenu" [yPosition]="'above'">
+              <button mat-menu-item (click)="FileInput.click()"><ng-container i18n="dropdown menu item">Select files (e.g. zip or . rar)</ng-container></button>
+              <button mat-menu-item (click)="FolderInput.click()"><ng-container i18n="dropdown menu item">Select folder (e.g. CD’s)</ng-container></button>
+            </mat-menu>
+            <input
+                #FileInput
+                type="file"
+                multiple
+                (change)="selectFiles($event)"
+                class="flw-file-input" />
+            <input
+                #FolderInput
+                type="file"
+                multiple
+                webkitdirectory
+                (change)="selectFiles($event)"
+                class="flw-file-input" />
+        </div>
+        <div class="flw-content-action">
+          <flw-button [flavor]="'iconText'"
+              [icon]="'send'"
+              [size]="'medium'"
+              [disabled]="senderDetailsForm.invalid || !files.length"
+              (buttonClicked)="prepareDataForUpload()">
+              <ng-container i18n="button">Send</ng-container>@if (!(userLoggedIn$ | async) && !userVerified) {*}
+          </flw-button>
+        </div>
+      </div>
+      <div class="flw-sender-details-drag-drop-container"
+          [class.flw-unregistered-user]="!(userLoggedIn$ | async)">
+        <div  #DragDropContainer
+            class="flw-sender-details-drag-drop scrollbar-thin"
+            (drop)="onFileDrop($event)"
+            (dragover)="preventDefault($event)"
+            (dragenter)="onFileEnter($event)"
+            (dragleave)="onFileLeave($event)">
+          @if (!showFileList) {
+            <div class="flw-drag-drop-info">
+              <mat-icon>note_add</mat-icon>
+              <div class="flw-drag-drop-info-text" i18n>drag & drop your files/folders here</div>
+            </div>
+          } @else {
+            @for (file of files; track file.name; let lastItem = $last) {
+              <div class="flw-sender-details-file-list" [class.flw-sender-details-file-list-last]="lastItem">
+                <span class="material-icons file-list-icon">&#xe873;</span>
+                <span class="file-list-title">{{file.name}}</span>
+                <flw-button class="file-list-remove" [flavor]="'iconBackground'" [icon]="'close'" [size]="'xxsmall'" [theme]="'gray-inverted'" (buttonClicked)="removeFileFromList(file.name)"></flw-button>
+              </div>
+            }
+          }
+        </div>
+        @if (showFileList) {
+          <div class="flw-drag-drop-files-total"><span i18n="total number of files">Total:</span> {{files.length}}</div>
+        }
+      </div>
+      <div class="flw-sender-details-footer">
+        <mat-icon class="flw-sender-details-footer-icon">tips_and_updates</mat-icon>
+        <div class="flw-sender-details-footer-text" i18n>
+          Copying files from your CD to a folder on your computer can make things faster! By doing this, you’ll reduce the time it takes to process and upload your files. Simply drag and drop your files from the CD to a new folder on your desktop before starting the upload.
+        </div>
+      </div>
+    </div>
+  }
+  @case ('verify') {
+    <flw-page-title><ng-container i18n="page title">Confirm your email address</ng-container></flw-page-title>
+    <flw-page-title [type]="'text'"
+        [color]="'darkgray'">
+        <ng-container i18n="page subtitle">We want to make sure you are a human. We have sent a verification code to</ng-container>
+          <span class="flw-home-upload-code-info-email">{{senderEmail}} {{'milosb@gmail.com'}}</span>
+    </flw-page-title>
+    <div class="flw-content flw-home-upload-verify-content flw-code-content">
+      <div class="flw-home-upload-code-title"
+          i18n>Enter verification code</div>
+      <ng-otp-input [formCtrl]="otpInputFormControl"
+          [config]="otpInputConfig"
+          class="flw-otp-input-field"></ng-otp-input>
+      <div class="flw-home-upload-code-link">
+        <flw-link [theme]="'gray'"
+            [underline]="true"
+            (linkClicked)="sendEmailCode()">
+          <ng-container i18n>Resend verification code</ng-container>
+        </flw-link>
+      </div>
+      <div class="flw-home-upload-code-content"
+          i18n>Please also check your spam folder</div>
+      <div class="flw-hope-upload-code-limit">
+        @if (limitReached) {
+          <mat-error><ng-container i18n>You have reached the maximum limit of uploads for today.</ng-container></mat-error>
+          <mat-error><ng-container i18n>Register for free to lift this limitation</ng-container></mat-error>
+        }
+      </div>
+      <div class="flw-home-upload-actions flw-content-action-code-submit">
+        <flw-button [flavor]="'iconText'"
+            type="button"
+            [size]="'medium'"
+            (buttonClicked)="goStateBack()"
+            [disabled]="verifying">
+          <ng-container i18n="button">Back</ng-container>
+        </flw-button>
+        <flw-button [flavor]="'iconText'"
+            type="button"
+            [icon]="'security'"
+            [size]="'medium'"
+            [disabled]="verifying || otpInputFormControl.invalid"
+            (buttonClicked)="verifyEmailCode()">
+          <ng-container i18n="button">Verify</ng-container>
+        </flw-button>
+      </div>
+      <div class="flw-home-upload-code-footer">
+        <ng-container i18n="terms and conditions|part 1">By clicking "Verify" you accept the</ng-container>&nbsp;
+        <flw-link [underline]="true"
+            [theme]="'white'"
+            [href]="'https://www.icat.solutions/termsandconditions'">
+          <ng-container i18n="terms and conditions|part 2">Terms & Conditions</ng-container>
+        </flw-link>
+      </div>
+      <div class="flw-home-upload-bottom">
+        <flw-link [theme]="'white'" [underline]="true" [route]="['/', 'register']"><ng-container i18n="create account|part 1">Create an account</ng-container></flw-link>
+        <span i18n="create account|part 2"> and skip this step in the future</span>
+      </div>
+    </div>
+  }
+}

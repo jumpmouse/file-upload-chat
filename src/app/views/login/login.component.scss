@@ -1,0 +1,108 @@
+@import 'variables';
+@import 'mixins';
+
+.flw-login {
+  padding: 14px 32px;
+
+  @include desktop-uhd-up {
+    padding: 32px;
+  }
+}
+
+.flw-login-title {
+  margin-bottom: 107px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 169px;
+  }
+}
+
+.flw-login-form {
+  display: block;
+  margin-bottom: 69px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 52px;
+  }
+}
+
+.flw-content-actions {
+ text-align: center;
+}
+
+.flw-content-action-submit {
+  margin-bottom: 25px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 61px;
+  }
+}
+
+.flw-form-field {
+  width: 100%;
+  display: block;
+}
+
+.flw-form-field-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flw-form-field-container-last {
+  margin-bottom: 14px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 25px;
+  }
+}
+
+.flw-form-field-label {
+  min-width: 151px;
+  padding-inline-end: 27px;
+  font-weight: bold;
+
+  @include desktop-qhd-up {
+    min-width: 178px;
+  }
+}
+
+.flw-form-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 68px;
+}
+
+.flw-form-info {
+  padding-inline-start: 192px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 21px;
+  line-height: 28px;
+  font-style: italic;
+}
+
+.flw-form-info-link {
+  margin-inline-start: 9px;
+  font-size: 18px;
+  line-height: 25px;
+
+  @include desktop-qhd-up {
+    margin-inline-start: 9px;
+    font-size: 23px;
+    line-height: 28px;
+  }
+}
+
+.flw-button-spinner {
+  display: inline-block;
+  margin-inline-end: 5px;
+}
+
+.flw-login-actions {
+  color: $backround-secondary-color;
+  text-align: center;
+}

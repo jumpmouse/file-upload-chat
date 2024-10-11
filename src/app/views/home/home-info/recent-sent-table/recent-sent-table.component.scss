@@ -1,0 +1,48 @@
+@import 'variables';
+@import 'mixins';
+
+.full-width-table {
+  width: 100%;
+  cursor: default;
+  
+  --mat-table-row-item-container-height: 38px;
+
+  @include desktop-qhd-up {
+    --mat-table-row-item-container-height: 42px;
+  }
+
+  @include desktop-uhd-up {
+    --mat-table-row-item-container-height: 46px;
+  }
+
+  .mat-mdc-cell,
+  .mat-mdc-header-cell {
+    --mat-table-row-item-outline-color: #{$menu-divider-color};
+    --mat-table-row-item-outline-width: 2px;
+
+    font-size: 18px;
+    line-height: 23px;
+
+    @include desktop-qhd-up {
+      font-size: 20px;
+      line-height: 25px;      
+    }
+  }
+
+  .mat-mdc-header-cell {
+    color: $darkgray-color;
+
+    &.mat-column-name,
+    &.mat-column-date {
+      padding-inline-start: 20px;
+    }
+  }
+}
+
+.mat-column-actions {
+  text-align: center;
+}
+
+.recent-sent-table-action {
+  display: inline-block;
+}

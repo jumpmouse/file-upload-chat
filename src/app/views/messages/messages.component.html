@@ -1,0 +1,81 @@
+<div class="flw-messages-page">
+  <flw-page-title><ng-container i18n="page title">Messages</ng-container></flw-page-title>
+<div class="flw-messages-page-content">
+  <div class="flw-messages-page-filters">
+    <div class="flw-messages-filter-events">
+      <flw-button [flavor]="'iconOutlined'"
+          class="flw-messages-filter-button"
+          [icon]="'filter_list'"
+          [size]="'small'"
+          [theme]="'soft-gray'"
+          [matMenuTriggerFor]="filterMenu"><span i18n="button">Filter</span></flw-button>
+      <mat-menu #filterMenu="matMenu" [yPosition]="'below'">
+        <button mat-menu-item (click)="filterEvents('All')"><ng-container i18n="messages filter|dropdown menu item">All</ng-container></button>
+        <button mat-menu-item (click)="filterEvents('Received')"><ng-container i18n="messages filter|dropdown menu item">Received</ng-container></button>
+        <button mat-menu-item (click)="filterEvents('Sent')"><ng-container i18n="messages filter|dropdown menu item">Sent</ng-container></button>
+        <button mat-menu-item (click)="filterEvents('Deleted')"><ng-container i18n="messages filter|dropdown menu item">Show messages from deleted events</ng-container></button>
+      </mat-menu>
+    </div>
+    <div class="flw-messages-sort-events">
+      <flw-button class="flw-messages-sort-events-button"
+          [flavor]="'textTransparent'"
+          [size]="'small'"
+          [theme]="'soft-gray'"
+          [matMenuTriggerFor]="sortMenu"><span i18="button">Sort</span> <mat-icon class="flw-messages-sort-events-icon">keyboard_arrow_down</mat-icon></flw-button>
+      <mat-menu #sortMenu="matMenu" [yPosition]="'below'">
+        <button mat-menu-item (click)="sortEvents('DESC')"><ng-container i18n="messages sort|dropdown menu item">Newest events first</ng-container></button>
+        <button mat-menu-item (click)="sortEvents('ASC')"><ng-container i18n="messages sort|dropdown menu item">Oldest events first</ng-container></button>
+      </mat-menu>
+
+    </div>
+  </div>
+  <div class="flw-messages-content">
+    <flw-card type="message-events" class="flw-messages-events">
+      <div class="mat-elevation-z0 flw-messages-events-content">
+        @for (event of events; track event.id) {
+          <div class="flw-message-event" (click)="eventSelected(event)">
+            @if (event.sentReceived === 'Sent') {
+              <div class="flw-message-event-title">
+                {{event.receiverUser?.suffix + ' ' || event.receiverUser?.title + ' ' || ''}}{{event.receiverUser?.firstName}}{{' ' + event.receiverUser?.lastName}}
+              </div>
+              <div class="flw-message-event-email">{{event.receiverUser?.email}}</div>
+              <div class="flw-message-event-phone">{{event.receiverUser?.phoneNumber}}</div>
+              <div class="flw-message-event-date-header" i18n>Event sent on</div>
+              <div class="flw-message-event-date">{{event.createdDate | date}}, {{event?.createdDate | date:'hh:mm'}} UTC</div>
+            }
+            @else {
+              <div class="flw-message-event-title">
+                {{event.senderUser?.suffix + ' ' || event.senderUser?.title + ' ' || ''}}{{event.senderUser?.firstName}}{{' ' + event.senderUser?.lastName}}
+              </div>
+              <div class="flw-message-event-email">{{event.senderUser?.email}}</div>
+              <div class="flw-message-event-phone">{{event.senderUser?.phoneNumber}}</div>
+              <div class="flw-message-event-date-header" i18n>Event received on</div>
+              <div class="flw-message-event-date">{{event.createdDate | date}}, {{event?.createdDate | date:'hh:mm'}} UTC</div>
+            }
+        </div>
+        } @empty {
+          <div class="flw-messages-placeholder">
+            <div class="flw-placeholder-image">
+              <flw-circular-content [type]="'image'"
+              [withBackground]="true"
+              [size]="'small'"
+              [content]="logoImage"></flw-circular-content>
+            </div>
+            <div class="flw-placeholder-title"><span i18n>No Falcon Link Events found</span></div>
+          </div>
+        }
+      </div>
+    </flw-card>
+    <flw-card type="message" class="flw-messages-chat">
+      <div class="mat-elevation-z0">
+        <div class="flw-messages-placeholder">
+          <div class="flw-placeholder-image">
+            <mat-icon fontSet="material-icons-outlined">forum</mat-icon>
+          </div>
+          <div class="flw-placeholder-title"><span i18n>No Messages</span></div>
+        </div>
+      </div>
+    </flw-card>
+  </div>
+</div>
+</div>

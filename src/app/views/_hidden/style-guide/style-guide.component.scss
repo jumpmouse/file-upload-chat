@@ -1,0 +1,94 @@
+.style-guide-container {
+  margin-top: 110px;
+  display: flex;
+  position: absolute;
+  top: 0;
+  inset-inline-start: auto;
+  width: 100%;
+  flex-direction: column;
+  flex-basis: 100%;
+  align-items: start;
+  background-color: #32363f;
+}
+
+.panel-card {
+  width: 100%;
+  background-color: transparent;
+
+  &-right {
+    height: 100%;
+  }
+}
+
+.panel-container {
+  display: flex;
+  gap: 55px;
+}
+
+.menu-panel {
+  flex: 2;
+  position: sticky;
+  top: 40px;
+  align-self: flex-start;
+}
+
+.content-panel {
+  flex: 5;
+
+  div {
+    margin-bottom: 20px;
+  }
+}
+
+.style-guide-card {
+  background-color: #6D7EA5;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.example-card {
+  color: white;
+  margin-bottom: 50px;
+}
+
+.example-card-ver2 {
+  color: white;
+  background-color: #445576;
+  margin-bottom: 50px;
+}
+
+.style-guide-card-title {
+  margin-bottom: 30px;
+  color: #32363f;
+}
+
+.style-guide-card-content {
+  padding-bottom: 30px;
+}
+
+.style-guide-card-divider {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #32363f;
+}
+
+.style-guide-card-content-divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  text-decoration: underline;
+}
+
+.menu-container {
+  width: 510px;
+  display: inline-block;
+  margin-inline-end: 40px;
+}
+
+.menu-container-flexy {
+  max-width: 510px;
+  display: inline-block;
+  margin-inline-end: 40px;
+}

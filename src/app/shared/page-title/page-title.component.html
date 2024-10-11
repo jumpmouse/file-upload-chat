@@ -1,0 +1,18 @@
+@if (type === 'title') {
+  <h1 [class]="'header header-title header-' + size">
+    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+  </h1>
+} @else if (type === 'withSubtitle') {
+  <h1 [class]="'header header-title header-' + size + ' header-flat'">
+    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+    <div class="header-subtitle">
+      <ng-content select="#subtitle"></ng-content>
+    </div>
+  </h1>
+} @else if (type === 'text') {
+  <div [class]="'header-text header-' + size + ' header-color-' + color">
+    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+  </div>
+}
+
+<ng-template #contentTpl><ng-content></ng-content></ng-template>

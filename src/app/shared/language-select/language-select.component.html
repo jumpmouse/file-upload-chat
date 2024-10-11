@@ -1,0 +1,7 @@
+<div class="language-select">
+  <span class="language-image"
+      [style.background-image]="'url(' + langImageUrls[selectedLanguage] +')'"></span>
+  <flw-select [value]="selectedLanguage"
+      [options]="languages"
+      (onChange)="languageChanged($event)"></flw-select>
+</div>

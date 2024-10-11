@@ -1,0 +1,50 @@
+@import "variables";
+
+.flw-select-wrapper {
+  --mat-form-field-container-vertical-padding: 0;
+  --mdc-filled-text-field-focus-active-indicator-height: 0;
+  --mdc-filled-text-field-active-indicator-height: 0;
+  --mat-form-field-container-height: 29px;
+  --mat-form-field-container-text-line-height: 28px;
+
+  --mat-select-panel-background-color: var(--sys-surface-container);
+  --mat-select-enabled-trigger-text-color: var(--sys-on-surface);
+  --mat-select-disabled-trigger-text-color: color-mix(in srgb, var(--sys-on-surface) 38%, transparent);
+  --mat-select-placeholder-text-color: var(--sys-on-surface);
+
+  --mat-select-trigger-text-font: var(--sys-body-small-font);
+  --mat-select-trigger-text-line-height: 29px;
+  --mat-select-trigger-text-size: var(--sys-body-small-size);
+  --mat-select-trigger-text-tracking: var(--sys-body-small-tracking);
+  --mat-select-trigger-text-weight: var(--sys-body-small-weight);
+  --mat-select-arrow-transform: translateY(-9px);
+
+  .mat-mdc-text-field-wrapper {
+    border-radius: 10px;
+  }
+
+  .mat-mdc-form-field-infix {
+    width: 103px;
+  }
+}
+
+.flw-select {
+  vertical-align: middle;
+}
+
+.cdk-overlay-container .flw-select-option-panel {
+  --mat-option-selected-state-layer-color: var(--sys-secondary-container);
+  --mat-option-label-text-font: var(--sys-label-small-font);
+  --mat-option-label-text-line-height: var(--sys-label-small-line-height);
+  --mat-option-label-text-size: var(--sys-body-small-size);
+  --mat-option-label-text-tracking: var(--sys-label-small-tracking);
+  --mat-option-label-text-weight: var(--sys-body-small-weight);
+
+  padding: 0;
+  border-radius: 13px;
+
+  .mat-mdc-option {
+    min-height: 30px;
+    line-height: 30px;
+  }
+}

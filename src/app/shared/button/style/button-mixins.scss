@@ -1,0 +1,110 @@
+@use "sass:map";
+@import 'mixins';
+
+// icon buttons
+@mixin icon-button-size($_responsive-variables, $sizes, $breakpoint) {
+  $variables: map.get($_responsive-variables, $breakpoint);
+  @each $size in $sizes {
+    &.flw-button-#{$size} {
+      --mdc-icon-button-state-layer-size: #{map.get($variables, layer-size-#{$size})};
+      --mdc-icon-button-icon-size: #{map.get($variables, icon-size-#{$size})};
+    }
+  }
+}
+// text buttons
+@mixin text-button-size($_responsive-variables, $sizes, $breakpoint) {
+  $variables: map.get($_responsive-variables, $breakpoint);
+  @each $size in $sizes {
+    &.flw-button-#{$size} {
+      font-size: #{map.get($variables, font-size-#{$size})};
+      line-height: #{map.get($variables, line-height-#{$size})};
+      height: #{map.get($variables, height-#{$size})};
+    }
+  }
+}
+
+// mixin for generating classes for button, for each breakpoint
+@mixin button-breakpoint-classes($type, $_responsive-variables, $_breakpoints, $_sizes) {
+  @each $breakpoint in $_breakpoints {
+    @if $breakpoint == mobile-up {
+      @if $type == icon {
+        @include icon-button-size($_responsive-variables, $_sizes, $breakpoint);
+      } @else if $type == text {
+        @include text-button-size($_responsive-variables, $_sizes, $breakpoint);
+      }
+    }
+    @else if $breakpoint == tablet-up {
+      @include tablet-up {
+        @if $type == icon {
+          @include icon-button-size($_responsive-variables, $_sizes, $breakpoint);
+        } @else if $type == text {
+          @include text-button-size($_responsive-variables, $_sizes, $breakpoint);
+        }
+      }
+    }
+    @else if $breakpoint == small-desktop-up {
+      @include small-desktop-up {
+        @if $type == icon {
+          @include icon-button-size($_responsive-variables, $_sizes, $breakpoint);
+        } @else if $type == text {
+          @include text-button-size($_responsive-variables, $_sizes, $breakpoint);
+        }
+      }
+    }
+    @else if $breakpoint == large-desktop-up {
+      @include desktop-qhd-up {
+        @if $type == icon {
+          @include icon-button-size($_responsive-variables, $_sizes, $breakpoint);
+        } @else if $type == text {
+          @include text-button-size($_responsive-variables, $_sizes, $breakpoint);
+        }
+      }
+    }
+  }
+}
+
+// text buttons
+@mixin container-style($_responsive-variables, $sizes, $breakpoint) {
+  $variables: map.get($_responsive-variables, $breakpoint);
+
+  --mdc-filled-button-container-shape: #{map.get($variables, border-radius)};
+
+  min-width: #{map.get($variables, width)};
+  padding: #{map.get($variables, padding)};
+
+  @each $size in $sizes {
+    &.flw-button-#{$size} {
+      @if $size == small {
+        padding: #{map.get($variables, padding-#{$size})};
+        min-width: auto;
+        border-radius: #{map.get($variables, border-radius-#{$size})};
+      } @else if $size == wide {
+        min-width: #{map.get($variables, width-#{$size})};
+      }
+    }
+  }
+}
+
+// mixin for generating classes for button, for each breakpoint
+@mixin container-breakpoint-classes($_responsive-variables, $_breakpoints, $_sizes) {
+  @each $breakpoint in $_breakpoints {
+    @if $breakpoint == mobile-up {
+      @include container-style($_responsive-variables, $_sizes, $breakpoint);
+    }
+    @else if $breakpoint == tablet-up {
+      @include tablet-up {
+        @include container-style($_responsive-variables, $_sizes, $breakpoint);
+      }
+    }
+    @else if $breakpoint == small-desktop-up {
+      @include small-desktop-up {
+        @include container-style($_responsive-variables, $_sizes, $breakpoint);
+      }
+    }
+    @else if $breakpoint == large-desktop-up {
+      @include desktop-qhd-up {
+        @include container-style($_responsive-variables, $_sizes, $breakpoint);
+      }
+    }
+  }
+}

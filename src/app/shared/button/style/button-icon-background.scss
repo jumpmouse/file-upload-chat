@@ -1,0 +1,55 @@
+@use './button-mixins';
+@import 'variables';
+
+$_responsive-variables: (
+  mobile-up: (
+    icon-size-xxsmall: 12px,
+    icon-size-xsmall: 14px,
+    icon-size-small: 18px,
+    icon-size-medium: 20px,
+    icon-size-large: 23px,
+    layer-size-xxsmall: 16px,
+    layer-size-xsmall: 21px,
+    layer-size-small: 27px,
+    layer-size-medium: 28px,
+    layer-size-large: 36px,
+  ),
+  tablet-up: (
+    icon-size-xxsmall: 12px,
+    icon-size-xsmall: 14px,
+    icon-size-small: 18px,
+    icon-size-medium: 20px,
+    icon-size-large: 23px,
+    layer-size-xxsmall: 16px,
+    layer-size-xsmall: 21px,
+    layer-size-small: 27px,
+    layer-size-medium: 28px,
+    layer-size-large: 36px,
+  ),
+  large-desktop-up: (
+    icon-size-xxsmall: 16px,
+    icon-size-xsmall: 18px,
+    icon-size-small: 20px,
+    icon-size-medium: 23px,
+    icon-size-large: 43px,
+    layer-size-xxsmall: 23px,
+    layer-size-xsmall: 27px,
+    layer-size-small: 32px,
+    layer-size-medium: 39px,
+    layer-size-large: 57px,
+  ),
+);
+$_sizes: xxsmall, xsmall, small, medium, large;
+$_breakpoints: mobile-up, tablet-up, large-desktop-up;
+
+.flw-button-icon-background {
+  background-color: #{$icon-button-background};
+
+  @include button-mixins.button-breakpoint-classes(icon, $_responsive-variables, $_breakpoints, $_sizes);
+
+  mat-icon {
+    font-size: var(--mdc-icon-button-icon-size);
+    width: var(--mdc-icon-button-icon-size);
+    height: var(--mdc-icon-button-icon-size);
+  }
+}

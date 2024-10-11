@@ -1,0 +1,83 @@
+<div class="flw-security">
+  <flw-page-title class="flw-security-title"><ng-container i18n="page title">Security</ng-container></flw-page-title>
+  <div class="flw-content">
+    <div class="flw-content">
+      <form [formGroup]="updatePasswordForm"
+          #formDirective="ngForm"
+          (submit)="updatePassword(formDirective)"
+          class="flw-profile-form">
+        <div class="flw-form-field-container">
+          <div class="flw-form-field-label" i18n="security|input label">old password</div>
+          <mat-form-field class="flw-form-field"
+              appearance="outline">
+            <input matInput
+                #oldPasswordInput
+                maxlength="100"
+                formControlName="currentPassword"
+                type="password"
+                required>
+            @if (updatePasswordForm.controls.currentPassword.touched && updatePasswordForm.controls.currentPassword.invalid) {
+              <mat-error>
+                @if (updatePasswordForm.controls.currentPassword.errors?.required) { <span i18n>Required</span> }
+              </mat-error>
+              }
+          </mat-form-field>
+        </div>
+        <div class="flw-form-field-container">
+          <div class="flw-form-field-label" i18n="security|input label">new password</div>
+          <mat-form-field class="flw-form-field"
+              appearance="outline">
+            <input matInput
+                maxlength="100"
+                formControlName="newPassword"
+                type="password"
+                required>
+            @if (updatePasswordForm.controls.newPassword.touched && updatePasswordForm.controls.newPassword.invalid) {
+              <mat-error>
+                @if (updatePasswordForm.controls.newPassword.errors?.required) { <span i18n>Required</span> }
+              </mat-error>
+              }
+          </mat-form-field>
+        </div>
+        <div class="flw-form-field-container flw-form-field-container-last">
+          <div class="flw-form-field-label" i18n="security|input label">re-enter new password</div>
+          <mat-form-field class="flw-form-field"
+              appearance="outline">
+            <input matInput
+                maxlength="100"
+                formControlName="confirmNewPassword"
+                type="password"
+                required>
+            @if (updatePasswordForm.controls.confirmNewPassword.touched && updatePasswordForm.controls.confirmNewPassword.invalid) {
+              <mat-error>
+                @if (updatePasswordForm.controls.confirmNewPassword.errors?.required) { <span i18n>Required</span> }
+              </mat-error>
+              }
+          </mat-form-field>
+        </div>
+        <div class="flw-form-info-container">
+          <div class="flw-form-info">
+            <div class="flw-form-info-hint" i18n>You password must be at least 10 characters long, include a number, an uppercase letter and a special character.</div>
+            <mat-error>
+              @if (updatePasswordForm.controls.newPassword.touched && !passwordsMatch) {<ng-container i18n>passwords do not match</ng-container>}
+            </mat-error>
+          </div>
+        </div>
+        <div class="flw-content-actions flw-content-action-submit">
+          <flw-button [flavor]="'iconText'"
+              type="submit"
+              [size]="'medium'"
+              [wide]="true"
+              [disabled]="!updatePasswordForm.controls.newPassword.touched || !updatePasswordForm.valid || !passwordsMatch">
+            @if (loading) {<mat-spinner class="flw-button-spinner" [diameter]="20"></mat-spinner>}
+            <ng-container i18n="button">Continue</ng-container>
+          </flw-button>
+        </div>
+      </form>
+    </div>
+    <mat-divider class="flw-security-divider"></mat-divider>
+    <div class="flw-content-actions">
+      <flw-button [flavor]="'textTransparent'" [size]="'medium'" theme="red" [bold]="true" (buttonClicked)="confirmDeleteAccount()"><ng-container i18n="button">Delete My Account</ng-container></flw-button>
+    </div>
+  </div>
+</div>

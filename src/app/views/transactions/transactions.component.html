@@ -1,0 +1,18 @@
+<div class="flw-transactions">
+  <flw-page-title class="flw-transactions-title"><span i18n="page title">Transaction History</span></flw-page-title>
+  <mat-tab-group animationDuration="0ms" [preserveContent]="true" [selectedIndex]="selectedTab">
+    <mat-tab label="table">
+      <flw-transactions-table [data]="transactionsData$"
+      (updatePagination)="updatePagination($event)"
+      (updateSorting)="setSorting($event)"
+      (updateListMode)="setListMode($event)"
+      (updateFilter)="setFilter($event)"
+      (goToDetails)="showDetails($event)"
+      (downloadFile)="downloadFile($event)"
+      (deleteFile)="deleteFile($event)"></flw-transactions-table>
+    </mat-tab>
+    <mat-tab label="details">
+      <flw-transaction-details [transaction]="selectedTransaction" (goToTransactions)="goToTransactions()" (deleteFile)="deleteFile($event)"></flw-transaction-details>
+    </mat-tab>
+  </mat-tab-group>
+</div>

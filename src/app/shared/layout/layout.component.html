@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="'dialog'" [mode]="'over'" [opened]="false">
+    <div class="sidenav-content-container scrollbar-thin">
+      <ng-content select="#sidenav-content"></ng-content>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content #scrollContainer class="scrollbar-thin">
+    <mat-toolbar>
+      <div class="flw-toolbar-container">
+        @if (isHandset$ | async) {
+          <button class="flw-toolbar-menu-button" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+        }
+        <flw-logo-link class="logo-link"></flw-logo-link>
+        <div class="language-menu">
+          <flw-language-select></flw-language-select>
+        </div>
+      </div>
+    </mat-toolbar>
+    <ng-content select="#main-content"></ng-content>
+    <div class="flw-footer-outer">
+      <div class="flw-footer">
+        <span><flw-link [theme]="'white'" [href]="'https://www.icat.solutions'">© 2024 iCat Solutions Ltd</flw-link></span>
+        <span class="flw-footer-made-in"><img src="/assets/lang-images/en.png" alt=""> <ng-container i18n>Made in England</ng-container></span>
+        <span><flw-link [theme]="'blue'" [href]="'https://www.icat.solutions/termsandconditions'"><ng-container i18n>Terms of Service</ng-container></flw-link></span>
+        <span><flw-link [theme]="'blue'" [href]="'https://www.icat.solutions/privacy'"><ng-container i18n>Privacy Policy</ng-container></flw-link></span>
+        <span><flw-link [theme]="'blue'" [href]="'mailto:info@icat.solutions'"><ng-container i18n>Contact us</ng-container></flw-link></span>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

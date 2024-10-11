@@ -1,0 +1,221 @@
+@import 'variables';
+@import 'mixins';
+
+.flw-title {
+  margin-bottom: 89px;
+
+  @include desktop-qhd-up {
+    margin-bottom: 112px;
+  }
+
+  @include desktop-uhd-up {
+    margin-bottom: 155px;
+  }
+}
+
+.flw-home-progress-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.flw-home-progress {
+  --mdc-circular-progress-active-indicator-color: #{$red-color};
+
+  width: 231px;
+  height: 231px;
+  border-radius: 50%;
+  background-color: $backround-secondary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 37px;
+
+  .flw-home-progress-percent,
+  .flw-home-progress-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    font-size: 41px;
+    font-weight: bold;
+  }
+
+  .flw-home-progress-error .mat-icon {
+    width: 62px;
+    height: 62px;
+    font-size: 62px;
+    line-height: 62px;
+    color: $warning-color;
+  }
+
+  @include desktop-qhd-up {
+    width: 303px;
+    height: 303px;
+
+    .flw-home-progress-percent,
+    .flw-home-progress-error {
+      font-size: 46px;
+    }  
+
+    .flw-home-progress-error .mat-icon {
+      width: 89px;
+      height: 89px;
+      font-size: 89px;
+      line-height: 89px;
+    }
+  }
+
+  @include desktop-uhd-up {
+    width: 356px;
+    height: 356px;
+    margin-bottom: 32px;
+
+    .flw-home-progress-percent,
+    .flw-home-progress-error {
+      font-size: 52px;
+    }  
+
+    .flw-home-progress-error .mat-icon {
+      width: 107px;
+      height: 107px;
+      font-size: 107px;
+      line-height: 107px;
+    }
+  }
+}
+
+.flw-text-info {
+  font-size: 21px;
+  line-height: 28px;
+  text-align: center;
+  opacity:1;
+  animation: flickerAnimation 2s infinite;
+  margin-bottom: 41px;
+
+  @include desktop-qhd-up {
+    font-size: 25px;
+    line-height: 32px;
+    margin-bottom: 46px;
+    }
+
+  @include desktop-uhd-up {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 50px;
+  }
+
+  &.flw-text-solid {
+    animation: none;
+    font-size: 25px;
+    line-height: 28px;
+
+    @include desktop-qhd-up {
+      font-size: 28px;
+      line-height: 32px;
+      }
+
+    @include desktop-uhd-up {
+      font-size: 32px;
+      line-height: 36px;
+    }
+  }
+}
+
+.flw-home-actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 50px;
+
+  @include desktop-qhd-up {
+    gap: 71px;
+  }
+}
+
+.flw-text-footer {
+  margin-top: 36px;
+  font-style: italic;
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+
+.flw-home-done-content {
+  text-align: center;
+}
+
+.flw-home-done-icon-holder {
+  margin-bottom: 29px;
+}
+
+.flw-home-done-icon {
+  font-size: 64px;
+  line-height: 64px;
+  width: 64px;
+  height: 64px;
+
+  @include desktop-qhd-up {
+    font-size: 78px;
+    line-height: 78px;
+    width: 78px;
+    height: 78px;
+    }
+
+  @include desktop-uhd-up {
+    font-size: 89px;
+    line-height: 89px;
+    width: 89px;
+    height: 89px;
+    }
+}
+
+.flw-home-done-title {
+  font-size: 36px;
+  line-height: 45px;
+  font-weight: bold;
+  margin-bottom: 37px;
+
+  @include desktop-qhd-up {
+    font-size: 43px;
+    line-height: 53px;
+  }
+
+  @include desktop-uhd-up {
+    font-size: 48px;
+    line-height: 61px;
+  }
+}
+
+.flw-home-done-text {
+  max-width: 623px;
+  margin: 0 auto 64px;
+  font-size: 21px;
+  line-height: 30px;
+  font-style: italic;
+
+  @include desktop-qhd-up {
+    max-width: 748px;
+    font-size: 25px;
+    line-height: 32px;
+  }
+
+  @include desktop-uhd-up {
+    font-size: 28px;
+    line-height: 35px;
+  }
+}
+
+.flw-home-done-important {
+  color: $red-color;
+  font-weight: bold;
+}

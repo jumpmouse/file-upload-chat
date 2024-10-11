@@ -1,0 +1,133 @@
+@import "variables";
+@import "mixins";
+
+@mixin customize-theme {
+  --sys-surface: #{$container-background-color};
+  --sys-surface-container: #{$container-surface-color};
+  --sys-secondary-container: #{$container-surface-selected-color};
+  --sys-on-secondary-container: #{$base-text-color};
+  --sys-background: #{$background-color};
+  --mat-sidenav-container-background-color: #{$background-color};
+  --sys-on-surface: #{$base-text-color};
+  --sys-on-surface-variant: #{$base-text-color};
+  --sys-on-background: #{$base-text-color};
+  --sys-error: #{$red-color};
+  --mdc-linear-progress-track-color: #{$container-background-color};
+  --mdc-linear-progress-active-indicator-color: #{$backround-secondary-color};
+  --mat-divider-color: #{$menu-divider-color};
+  --mdc-dialog-container-color: #{$backround-secondary-color};
+  --mdc-plain-tooltip-container-color: #{$backround-secondary-color};
+  --mdc-plain-tooltip-supporting-text-color: #{$base-text-color};
+  --mdc-plain-tooltip-supporting-text-line-height: 20px;
+  --mdc-plain-tooltip-supporting-text-size: 12px;
+  --mdc-plain-tooltip-supporting-text-weight: 400;
+  --mdc-outlined-text-field-container-shape: 8px;
+  --mat-form-field-container-height: 52px;
+  --mat-form-field-container-vertical-padding: 11px;
+  --mdc-outlined-text-field-input-text-placeholder-color: #{$darkest-color};
+  --mat-menu-item-label-text-line-height: 21px;
+  --mat-menu-item-label-text-size: 16px;
+  --mat-standard-button-toggle-height: 28px;
+
+  @include desktop-qhd-up {
+    --mat-menu-item-label-text-line-height: 25px;
+    --mat-menu-item-label-text-size: 20px;
+    --mat-standard-button-toggle-height: 37px;
+
+    --mdc-snackbar-supporting-text-size: #{$snackbar-medium-font-size};
+    --mdc-snackbar-supporting-text-line-height: #{$snackbar-medium-line-height};
+  }
+
+  @include desktop-uhd-up {
+    --mat-standard-button-toggle-height: 43px;
+
+    --mdc-snackbar-supporting-text-size: #{$snackbar-large-font-size};
+    --mdc-snackbar-supporting-text-line-height: #{$snackbar-large-line-height};
+  }
+}
+
+@mixin set-typescale {
+  // body
+  --sys-body-large: 400 #{$body-small-font-size} / #{$body-small-line-height} #{$default-font-family};
+  --sys-body-large-font: #{$default-font-family};
+  --sys-body-large-line-height: #{$body-small-line-height};
+  --sys-body-large-size: #{$body-small-font-size};
+  --sys-body-large-tracking: 0.031rem;
+  --sys-body-large-weight: 400;
+
+  --sys-body-small: 400 #{$body-small-font-size} / #{$body-small-line-height} #{$default-font-family};
+  --sys-body-small-font: #{$default-font-family};
+  --sys-body-small-line-height: #{$body-small-line-height};
+  --sys-body-small-size: #{$body-small-font-size};
+  --sys-body-small-tracking: 0.031rem;
+  --sys-body-small-weight: 400;
+  // title
+  --sys-title-large: 700 #{$title-small-font-size} / #{$title-small-line-height} #{$default-font-family};
+  --sys-title-large-font: #{$default-font-family};
+  --sys-title-large-line-height: #{$title-small-line-height};
+  --sys-title-large-size: #{$title-small-font-size};
+  --sys-title-large-tracking: 0rem;
+  --sys-title-large-weight: 700;
+  --sys-title-medium: 700 #{$title-small-font-size} / #{$title-small-line-height} #{$default-font-family};
+  --sys-title-medium-font: #{$default-font-family};
+  --sys-title-medium-line-height: #{$title-small-line-height};
+  --sys-title-medium-size: #{$title-small-font-size};
+  --sys-title-medium-tracking: 0rem;
+  --sys-title-medium-weight: 700;
+  --sys-title-small: 700 #{$title-xsmall-font-size} / #{$title-xsmall-line-height} #{$default-font-family};
+  --sys-title-small-font: #{$default-font-family};
+  --sys-title-small-line-height: #{$title-xsmall-line-height};
+  --sys-title-small-size: #{$title-xsmall-font-size};
+  --sys-title-small-tracking: 0rem;
+  --sys-title-small-weight: 700;
+
+  // label
+  --sys-label-small: 400 #{$label-small-font-size} / #{$label-small-line-height} #{$default-font-family};
+  --sys-label-small-font: #{$default-font-family};
+  --sys-label-small-line-height: #{$label-small-line-height};
+  --sys-label-small-size: #{$label-small-font-size};
+  --sys-label-small-tracking: 0.031rem;
+  --sys-lable-small-weight: 400;
+
+  @include tablet-up {
+    --sys-body-large: 400 #{$body-medium-font-size} / #{$body-medium-line-height} #{$default-font-family};
+    --sys-body-large-line-height: #{$body-medium-line-height};
+    --sys-body-large-size: #{$body-medium-font-size};
+
+    --sys-title-large: 700 #{$title-medium-font-size} / #{$title-medium-line-height} #{$default-font-family};
+    --sys-title-large-line-height: #{$title-medium-line-height};
+    --sys-title-large-size: #{$title-medium-font-size};
+
+    --sys-title-medium: 700 #{$title-medium-font-size} / #{$title-medium-line-height} #{$default-font-family};
+    --sys-title-medium-line-height: #{$title-medium-line-height};
+    --sys-title-medium-size: #{$title-medium-font-size};
+  }
+
+  @include desktop-qhd-up {
+    --sys-body-large: 400 #{$body-sublarge-font-size} / #{$body-sublarge-line-height} #{$default-font-family};
+    --sys-body-large-line-height: #{$body-sublarge-line-height};
+    --sys-body-large-size: #{$body-sublarge-font-size};
+
+    --sys-title-large: 700 #{$title-sublarge-font-size} / #{$title-sublarge-line-height} #{$default-font-family};
+    --sys-title-large-line-height: #{$title-sublarge-line-height};
+    --sys-title-large-size: #{$title-sublarge-font-size};
+
+    --sys-title-small: 700 #{$title-small-font-size} / #{$title-small-line-height} #{$default-font-family};
+    --sys-title-small-font: #{$default-font-family};
+    --sys-title-small-line-height: #{$title-small-line-height};
+    --sys-title-small-size: #{$title-small-font-size};
+    --sys-title-small-tracking: 0rem;
+    --sys-title-small-weight: 700;
+
+  }
+
+  @include desktop-uhd-up {
+    --sys-body-large: 400 #{$body-large-font-size} / #{$body-large-line-height} #{$default-font-family};
+    --sys-body-large-line-height: #{$body-large-line-height};
+    --sys-body-large-size: #{$body-large-font-size};
+
+    --sys-title-large: 700 #{$title-large-font-size} / #{$title-large-line-height} #{$default-font-family};
+    --sys-title-large-line-height: #{$title-large-line-height};
+    --sys-title-large-size: #{$title-large-font-size};
+  }
+}

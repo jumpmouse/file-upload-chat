@@ -1,0 +1,31 @@
+@import 'mixins';
+
+// mobile and tablet up
+$button-icon-size: 21px;
+$button-layer-size: 21px;
+$button-outline: 2px solid;
+
+// large desktop up
+$button-desktop-icon-size: 36px;
+$button-desktop-layer-size: 36px;
+$button-desktop-outline: 4px solid;
+
+.flw-button-icon-outlined {
+  --mdc-icon-button-state-layer-size: #{$button-icon-size};
+  --mdc-icon-button-icon-size: #{$button-layer-size};
+
+  outline: #{$button-outline};
+
+  @include desktop-qhd-up {
+    --mdc-icon-button-state-layer-size: #{$button-desktop-icon-size};
+    --mdc-icon-button-icon-size: #{$button-desktop-layer-size};
+
+    outline: #{$button-desktop-outline};
+  }
+
+  mat-icon {
+    font-size: var(--mdc-icon-button-icon-size);
+    width: var(--mdc-icon-button-icon-size);
+    height: var(--mdc-icon-button-icon-size);
+  }
+}

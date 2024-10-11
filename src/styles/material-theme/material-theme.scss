@@ -1,0 +1,41 @@
+@use "@angular/material" as mat;
+@use "./falcon-link-theme/falcon-link-theme";
+@use "./falcon-link-theme/theme-helpers";
+
+@include mat.core();
+
+:root {
+  @include mat.core-theme(falcon-link-theme.$dark-theme);
+  // add components themes
+  @include mat.toolbar-theme(falcon-link-theme.$dark-theme);
+  @include mat.sidenav-theme(falcon-link-theme.$dark-theme);
+  @include mat.card-theme(falcon-link-theme.$dark-theme);
+  @include mat.select-theme(falcon-link-theme.$dark-dense-theme);
+  @include mat.option-theme(falcon-link-theme.$dark-theme);
+  @include mat.form-field-theme(falcon-link-theme.$dark-dense-theme);
+  @include mat.progress-bar-theme(falcon-link-theme.$dark-theme);
+  @include mat.icon-button-theme(falcon-link-theme.$dark-theme);
+  @include mat.button-theme(falcon-link-theme.$light-theme);
+  @include mat.input-theme(falcon-link-theme.$dark-theme);
+  @include mat.progress-spinner-theme(falcon-link-theme.$dark-theme);
+  @include mat.snack-bar-theme(falcon-link-theme.$dark-theme);
+  @include mat.divider-theme(falcon-link-theme.$dark-theme);
+  @include mat.dialog-theme(falcon-link-theme.$dark-theme);
+  @include mat.table-theme(falcon-link-theme.$dark-theme);
+  @include mat.paginator-theme(falcon-link-theme.$dark-theme);
+  @include mat.tooltip-theme(falcon-link-theme.$light-theme);
+  @include mat.menu-theme(falcon-link-theme.$dark-theme);
+  @include mat.button-toggle-theme(falcon-link-theme.$dark-theme);
+  // @include mat.sort-theme(falcon-link-theme.$light-theme);
+  @include mat.tabs-theme(falcon-link-theme.$dark-theme);
+
+  // add typography hieararchy; enable system level css tokens
+  @include mat.system-level-typography(falcon-link-theme.$dark-theme);
+  @include mat.typography-hierarchy(falcon-link-theme.$dark-theme);
+
+  // expose colors system level css tokens
+  @include mat.system-level-colors(falcon-link-theme.$dark-theme);
+
+  @include theme-helpers.customize-theme();
+  @include theme-helpers.set-typescale();
+}

@@ -1,0 +1,88 @@
+@import 'variables';
+
+.flw-button-weight-medium {
+  font-family: $medium-font-family;
+  // TODO remove after adding font
+  font-weight: 600;
+}
+
+.flw-button-bold {
+  font-weight: bold;
+}
+
+// button color themes
+.flw-button {
+  // buttons with transparent background
+  &.flw-button-icon,
+  &.flw-button-icon-outlined,
+  &.flw-button-text {
+    &:disabled {
+      opacity: .28;
+      font-style: italic;
+    }
+
+    &.flw-button-blue {
+      color: #{$message-color};
+    }
+
+    &.flw-button-red {
+      color: #{$red-color};
+    }
+
+    &.flw-button-white {
+      color: #{$base-text-color};
+    }
+
+    &.flw-button-gray {
+      color: #{$backround-secondary-color};
+    }
+
+    &.flw-button-soft-gray {
+      color: #{$filter-text-color};
+    }
+  }
+
+  // buttons with background
+  &.flw-button-icon-background,
+  &.flw-button-text-icon {
+    --mdc-filled-button-disabled-container-color: #{$text-button-background};
+    color: #{$base-text-color};
+
+    &.flw-button-blue {
+      --mdc-filled-button-disabled-container-color: #{$message-color};
+      background-color: #{$message-color};
+    }
+
+    &.flw-button-red {
+      --mdc-filled-button-disabled-container-color: #{$red-color};
+      background-color: #{$red-color};
+    }
+
+    &.flw-button-gray {
+      --mdc-filled-button-disabled-container-color: #{$backround-secondary-color};
+      background-color: #{$backround-secondary-color};
+    }
+
+    &.flw-button-gray-inverted {
+      --mdc-filled-button-disabled-container-color: $container-background-color;
+      color: #{$container-background-color};
+      background-color: #{$darkgray-color};
+    }
+
+    &:disabled {
+      opacity: .5;
+      font-style: italic;
+    }
+  }
+}
+// button shape and size, with breakpoints
+// type icon with background
+@import './style/button-icon-background';
+// type icon with transparent background
+@import './style/button-icon-transparent';
+// type icon outlined
+@import './style/button-icon-outlined';
+// type text transparent
+@import './style/button-text-transparent';
+// type text or icon + text
+@import './style/button-text-icon';

@@ -1,0 +1,40 @@
+@use './button-mixins';
+
+$_responsive-variables: (
+  mobile-up: (
+    icon-size-small: 16px,
+    icon-size-medium: 23px,
+    icon-size-large: 28px,
+    layer-size-small: 20px,
+    layer-size-medium: 36px,
+    layer-size-large: 39px,
+  ),
+  tablet-up: (
+    icon-size-small: 16px,
+    icon-size-medium: 23px,
+    icon-size-large: 28px,
+    layer-size-small: 20px,
+    layer-size-medium: 36px,
+    layer-size-large: 39px,
+  ),
+  large-desktop-up: (
+    icon-size-small: 21px,
+    icon-size-medium: 28px,
+    icon-size-large: 46px,
+    layer-size-small: 34px,
+    layer-size-medium: 57px,
+    layer-size-large: 69px,
+  ),
+);
+$_sizes: small, medium, large;
+$_breakpoints: mobile-up, tablet-up, large-desktop-up;
+
+.flw-button-icon {
+  @include button-mixins.button-breakpoint-classes(icon, $_responsive-variables, $_breakpoints, $_sizes);
+
+  mat-icon {
+    font-size: var(--mdc-icon-button-icon-size);
+    width: var(--mdc-icon-button-icon-size);
+    height: var(--mdc-icon-button-icon-size);
+  }
+}
